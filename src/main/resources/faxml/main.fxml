@@ -1,0 +1,10 @@
+<?import javafx.scene.Scene?>
+<?import javafx.stage.Stage?>
+<Stage xmlns:fx="http://javafx.com/fxml/1" title="Główne okno" resizable="true"
+       xmlns="http://javafx.com/javafx/8.0.112">
+    <scene>
+        <Scene>
+            <fx:include source="main_content.fxml"/>
+        </Scene>
+    </scene>
+</Stage>

@@ -14,8 +14,8 @@ public abstract class AbstractJavaFxApplicationSupport extends Application{
 
     @Override
     public void init() throws Exception {
-        applicationContext = SpringApplication.run(getClass(), savedArgs);
-        applicationContext.getAutowireCapableBeanFactory().autowireBean(this);
+        applicationContext = Context.getInstance();
+//        applicationContext.getAutowireCapableBeanFactory().autowireBean(this);
     }
 
     @Override
