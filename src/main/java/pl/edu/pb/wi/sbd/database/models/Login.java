@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
- *
  * @author R
  */
 @Entity
@@ -119,5 +118,5 @@ public class Login implements Serializable {
     public String toString() {
         return "models.Login[ idLogin=" + idLogin + " ]";
     }
-    
+
 }
