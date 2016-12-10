@@ -24,7 +24,7 @@ public class Login implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idLogin;
 
-    @Column(name = "nazwa")
+    @Column(name = "nazwa", unique = true)
     private String nazwa;
 
     @Column(name = "haslo")

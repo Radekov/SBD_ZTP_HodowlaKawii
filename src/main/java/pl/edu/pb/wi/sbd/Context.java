@@ -16,7 +16,6 @@ public class Context {
         if (context == null) {
             context = SpringApplication.run(SbdSwinieApplication.class);
         }
-
         return context;
     }
 }

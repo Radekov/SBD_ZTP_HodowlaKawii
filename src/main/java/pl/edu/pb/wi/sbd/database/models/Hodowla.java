@@ -1,6 +1,11 @@
 package pl.edu.pb.wi.sbd.database.models;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
@@ -16,10 +21,15 @@ import java.util.Collection;
 public class Hodowla implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    @GenericGenerator(name="gen", strategy="foreign", parameters={@org.hibernate.annotations.Parameter(name="property", value="login")})
     @Id
-    @Basic(optional = false)
-    @Column(name = "id_hodowla")
+    @GeneratedValue(generator = "gen")
+    @Column(name = "id_hodowla", unique = true, nullable = false)
     private Integer idHodowla;
+
+    @Column(name = "nazwa_hodowla")
+    private String nazwaHodowla;
 
     @JoinTable(name = "HODOWLA_KAWIA", joinColumns = {
         @JoinColumn(name = "id_hodowla", referencedColumnName = "id_hodowla")}, inverseJoinColumns = {
@@ -33,8 +43,8 @@ public class Hodowla implements Serializable {
     @ManyToMany
     private Collection<Rasa> rasaCollection;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "hodowla")
-    private HodowlaStatus hodowlaStatus;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hodowla")
+    private Collection<HodowlaStatus> hodowlaStatusCollection;
 
     @OneToMany(mappedBy = "idHodowla")
     private Collection<Miot> miotCollection;
@@ -57,12 +67,24 @@ public class Hodowla implements Serializable {
         this.idHodowla = idHodowla;
     }
 
+    public Hodowla(Login login) {
+        this.login = login;
+    }
+
     public Integer getIdHodowla() {
         return idHodowla;
     }
 
     public void setIdHodowla(Integer idHodowla) {
         this.idHodowla = idHodowla;
+    }
+
+    public String getNazwaHodowla() {
+        return nazwaHodowla;
+    }
+
+    public void setNazwaHodowla(String nazwaHodowla) {
+        this.nazwaHodowla = nazwaHodowla;
     }
 
     @XmlTransient
@@ -83,12 +105,12 @@ public class Hodowla implements Serializable {
         this.rasaCollection = rasaCollection;
     }
 
-    public HodowlaStatus getHodowlaStatus() {
-        return hodowlaStatus;
+    public Collection<HodowlaStatus> getHodowlaStatusCollection() {
+        return hodowlaStatusCollection;
     }
 
-    public void setHodowlaStatus(HodowlaStatus hodowlaStatus) {
-        this.hodowlaStatus = hodowlaStatus;
+    public void setHodowlaStatusCollection(Collection<HodowlaStatus> hodowlaStatusCollection) {
+        this.hodowlaStatusCollection = hodowlaStatusCollection;
     }
 
     @XmlTransient

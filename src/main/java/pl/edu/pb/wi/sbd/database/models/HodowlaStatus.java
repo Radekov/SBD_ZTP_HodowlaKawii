@@ -19,41 +19,36 @@ import java.util.Date;
 @Entity
 @Table(name = "HODOWLA_STATUS")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "HodowlaStatus.findAll", query = "SELECT h FROM HodowlaStatus h")
-    , @NamedQuery(name = "HodowlaStatus.findByIdHodowla", query = "SELECT h FROM HodowlaStatus h WHERE h.idHodowla = :idHodowla")
-    , @NamedQuery(name = "HodowlaStatus.findByStatus", query = "SELECT h FROM HodowlaStatus h WHERE h.status = :status")
-    , @NamedQuery(name = "HodowlaStatus.findByData", query = "SELECT h FROM HodowlaStatus h WHERE h.data = :data")})
+//TODO zmienieć mapowanie, dwa Klucze Obce: id_Hodowla, Data - dodać HodowlaStatusPK
 public class HodowlaStatus implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "id_hodowla")
-
-    private Integer idHodowla;
+    @EmbeddedId
+    protected HodowlaStatusPK hodowlaStatusPK;
     @Column(name = "status")
     private String status;
-    @Column(name = "data")
-    @Type(type="date")
-    private Date data;
+
     @JoinColumn(name = "id_hodowla", referencedColumnName = "id_hodowla", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Hodowla hodowla;
 
     public HodowlaStatus() {
     }
 
-    public HodowlaStatus(Integer idHodowla) {
-        this.idHodowla = idHodowla;
+    public HodowlaStatus(HodowlaStatusPK hodowlaStatusPK) {
+        this.hodowlaStatusPK = hodowlaStatusPK;
     }
 
-    public Integer getIdHodowla() {
-        return idHodowla;
+    public HodowlaStatus (Integer idHodowla, Date date){
+        hodowlaStatusPK = new HodowlaStatusPK(idHodowla,date);
     }
 
-    public void setIdHodowla(Integer idHodowla) {
-        this.idHodowla = idHodowla;
+    public HodowlaStatusPK getHodowlaStatusPK() {
+        return hodowlaStatusPK;
+    }
+
+    public void setHodowlaStatusPK(HodowlaStatusPK hodowlaStatusPK) {
+        this.hodowlaStatusPK = hodowlaStatusPK;
     }
 
     public String getStatus() {
@@ -64,13 +59,6 @@ public class HodowlaStatus implements Serializable {
         this.status = status;
     }
 
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
 
     public Hodowla getHodowla() {
         return hodowla;
@@ -83,7 +71,7 @@ public class HodowlaStatus implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idHodowla != null ? idHodowla.hashCode() : 0);
+        hash += (hodowlaStatusPK != null ? hodowlaStatusPK.hashCode() : 0);
         return hash;
     }
 
@@ -94,7 +82,7 @@ public class HodowlaStatus implements Serializable {
             return false;
         }
         HodowlaStatus other = (HodowlaStatus) object;
-        if ((this.idHodowla == null && other.idHodowla != null) || (this.idHodowla != null && !this.idHodowla.equals(other.idHodowla))) {
+        if ((this.hodowlaStatusPK == null && other.hodowlaStatusPK != null) || (this.hodowlaStatusPK != null && !this.hodowlaStatusPK.equals(other.hodowlaStatusPK))) {
             return false;
         }
         return true;
@@ -102,7 +90,7 @@ public class HodowlaStatus implements Serializable {
 
     @Override
     public String toString() {
-        return "models.HodowlaStatus[ idHodowla=" + idHodowla + " ]";
+        return "models.HodowlaStatus[ idHodowla=" + hodowlaStatusPK + " ]";
     }
     
 }
