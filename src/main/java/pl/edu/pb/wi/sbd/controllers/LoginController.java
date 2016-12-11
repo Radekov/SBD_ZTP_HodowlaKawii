@@ -4,11 +4,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
 import pl.edu.pb.wi.sbd.Context;
+import pl.edu.pb.wi.sbd.SbdSwinieApplication;
 import pl.edu.pb.wi.sbd.database.models.Hodowla;
 import pl.edu.pb.wi.sbd.database.models.Login;
 import pl.edu.pb.wi.sbd.database.models.Milosnik;
@@ -17,6 +21,7 @@ import pl.edu.pb.wi.sbd.database.repository.LoginRepository;
 import pl.edu.pb.wi.sbd.dialogs.AlertBox;
 import pl.edu.pb.wi.sbd.security.HashPassword;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -96,7 +101,6 @@ public class LoginController implements Initializable {
         }
         String hashPass = HashPassword.get_SHA_512_SecurePassword(pass);
         if (!hashPass.equals(result.getHaslo())) {
-            System.out.println("Nick: " + nick + " nie istnieje.");
 //            new AlertBox().display("Nie udane logowanie", "Nie prawidłowe hasło");
             setErrotText("Nie prawidłowe hasło");
             return;
@@ -105,10 +109,14 @@ public class LoginController implements Initializable {
         Context.setLogged(result);
 
         try {
-            Stage stage = FXMLLoader.load(getClass().getResource("/faxml/main_controller.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/faxml/userController.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = SbdSwinieApplication.getWindow();
+            stage.setScene(new Scene(root1,1280,900));
             stage.setResizable(true);
             stage.centerOnScreen();
             stage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

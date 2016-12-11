@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * @author R
@@ -40,7 +41,7 @@ public class Hodowla extends Login implements Serializable {
     @ManyToMany
     private Collection<Rasa> rasaCollection;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hodowla")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hodowla", fetch = FetchType.EAGER)
     private Collection<HodowlaStatus> hodowlaStatusCollection;
 
     @OneToMany(mappedBy = "idHodowla")
@@ -174,13 +175,18 @@ public class Hodowla extends Login implements Serializable {
     @Override
     public String write() {
         //Leniwe podejście FIXME
-        HodowlaStatus[] statuss =(HodowlaStatus[]) hodowlaStatusCollection.toArray();
-        HodowlaStatus status = statuss[0];
-        for (HodowlaStatus s :
-                statuss) {
-                if (status.getHodowlaStatusPK().getDate().compareTo(s.getHodowlaStatusPK().getDate()) > 0)
-                    status = s;
+        HodowlaStatus status = null;
+        Iterator itr = hodowlaStatusCollection.iterator();
+        if(itr.hasNext())
+            status = (HodowlaStatus) itr.next();
+        if (status == null) {
+            return ("Hodowla: " + nazwaHodowla + " Status: " + "nieznay");
         }
-        return("Hodowla: " + nazwaHodowla + " Status: " + status.getStatus());
+        while (itr.hasNext()) {
+            HodowlaStatus s = (HodowlaStatus) itr.next();
+            if (status.getHodowlaStatusPK().getDate().compareTo(s.getHodowlaStatusPK().getDate()) > 0)
+                status = s;
+        }
+        return ("Hodowla: " + nazwaHodowla + " Status: " + status.getStatus());
     }
 }
