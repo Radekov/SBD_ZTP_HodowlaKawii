@@ -17,6 +17,6 @@ public interface KawiaRepository extends JpaRepository<Kawia,Integer> {
              "WHERE k.idKawia = wk.id_kawia " +
              "AND wk.idOsoba = o.id_osoba AND wk.data_zwrotu IS NULL " +
              "AND o.idOsoba = oh.id_osoba " +
-             "AND oh.idHodowla = ?1")
+             "AND oh.hodowla = ?1")
     public ObservableList<Kawia> findByWlasiciel(Integer idHodowla);
 }
