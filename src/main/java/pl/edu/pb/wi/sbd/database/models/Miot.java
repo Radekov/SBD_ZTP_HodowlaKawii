@@ -20,11 +20,6 @@ import java.util.Date;
 @Entity
 @Table(name = "MIOT")
 @XmlRootElement
-@NamedQueries({
-        @NamedQuery(name = "Miot.findAll", query = "SELECT m FROM Miot m")
-        , @NamedQuery(name = "Miot.findByIdMiot", query = "SELECT m FROM Miot m WHERE m.idMiot = :idMiot")
-        , @NamedQuery(name = "Miot.findByNrMiotu", query = "SELECT m FROM Miot m WHERE m.nrMiotu = :nrMiotu")
-        , @NamedQuery(name = "Miot.findByDataUrodzenia", query = "SELECT m FROM Miot m WHERE m.dataUrodzenia = :dataUrodzenia")})
 public class Miot implements Serializable {
 
     private static final long serialVersionUID = 1L;

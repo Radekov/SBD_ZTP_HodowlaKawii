@@ -1,7 +1,6 @@
 package pl.edu.pb.wi.sbd.database.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import pl.edu.pb.wi.sbd.database.models.Login;
 import pl.edu.pb.wi.sbd.database.repository.LoginRepository;

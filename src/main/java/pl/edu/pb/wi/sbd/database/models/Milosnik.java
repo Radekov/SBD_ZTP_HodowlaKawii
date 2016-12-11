@@ -19,18 +19,14 @@ import java.util.Date;
 @Entity
 @Table(name = "MILOSNIK")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Milosnik.findAll", query = "SELECT m FROM Milosnik m")
-    , @NamedQuery(name = "Milosnik.findByIdMilosnik", query = "SELECT m FROM Milosnik m WHERE m.idMilosnik = :idMilosnik")
-    , @NamedQuery(name = "Milosnik.findByDataNadania", query = "SELECT m FROM Milosnik m WHERE m.dataNadania = :dataNadania")
-    , @NamedQuery(name = "Milosnik.findByAktywnosc", query = "SELECT m FROM Milosnik m WHERE m.aktywnosc = :aktywnosc")})
-public class Milosnik implements Serializable {
+@PrimaryKeyJoinColumn(name = "id_milosnik", referencedColumnName = "id_login")
+public class Milosnik extends Login implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "id_milosnik")
-    private Integer idMilosnik;
+//    @Id
+//    @Basic(optional = false)
+//    @Column(name = "id_milosnik")
+//    private Integer idMilosnik;
 
     @Type(type="date")
     @Column(name = "data_nadania")
@@ -40,23 +36,23 @@ public class Milosnik implements Serializable {
     @JoinColumn(name = "id_osoba", referencedColumnName = "id_osoba")
     @ManyToOne
     private Osoba idOsoba;
-    @JoinColumn(name = "id_milosnik", referencedColumnName = "id_login", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Login login;
+//    @JoinColumn(name = "id_milosnik", referencedColumnName = "id_login", insertable = false, updatable = false)
+//    @OneToOne(optional = false)
+//    private Login login;
 
     public Milosnik() {
     }
 
     public Milosnik(Integer idMilosnik) {
-        this.idMilosnik = idMilosnik;
+        super(idMilosnik);
     }
 
     public Integer getIdMilosnik() {
-        return idMilosnik;
+        return getIdLogin();
     }
 
     public void setIdMilosnik(Integer idMilosnik) {
-        this.idMilosnik = idMilosnik;
+        setIdLogin(idMilosnik);
     }
 
     public Date getDataNadania() {
@@ -83,19 +79,20 @@ public class Milosnik implements Serializable {
         this.idOsoba = idOsoba;
     }
 
-    public Login getLogin() {
-        return login;
-    }
-
-    public void setLogin(Login login) {
-        this.login = login;
-    }
+//    public Login getLogin() {
+//        return login;
+//    }
+//
+//    public void setLogin(Login login) {
+//        this.login = login;
+//    }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (idMilosnik != null ? idMilosnik.hashCode() : 0);
-        return hash;
+//        int hash = 0;
+//        hash += (idMilosnik != null ? idMilosnik.hashCode() : 0);
+//        return hash;
+        return super.hashCode();
     }
 
     @Override
@@ -105,7 +102,7 @@ public class Milosnik implements Serializable {
             return false;
         }
         Milosnik other = (Milosnik) object;
-        if ((this.idMilosnik == null && other.idMilosnik != null) || (this.idMilosnik != null && !this.idMilosnik.equals(other.idMilosnik))) {
+        if ((this.getIdLogin() == null && other.getIdLogin()  != null) || (this.getIdLogin()  != null && !this.getIdLogin() .equals(other.getIdLogin() ))) {
             return false;
         }
         return true;
@@ -113,7 +110,11 @@ public class Milosnik implements Serializable {
 
     @Override
     public String toString() {
-        return "models.Milosnik[ idMilosnik=" + idMilosnik + " ]";
+        return "models.Milosnik[ idMilosnik=" + getIdLogin()  + " ]";
     }
-    
+
+    @Override
+    public String write() {
+        return toString();
+    }
 }

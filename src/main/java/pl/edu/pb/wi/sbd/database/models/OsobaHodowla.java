@@ -17,12 +17,6 @@ import java.util.Date;
 @Entity
 @Table(name = "OSOBA_HODOWLA")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "OsobaHodowla.findAll", query = "SELECT o FROM OsobaHodowla o")
-    , @NamedQuery(name = "OsobaHodowla.findByIdOsoba", query = "SELECT o FROM OsobaHodowla o WHERE o.osobaHodowlaPK.idOsoba = :idOsoba")
-    , @NamedQuery(name = "OsobaHodowla.findByIdHodowla", query = "SELECT o FROM OsobaHodowla o WHERE o.osobaHodowlaPK.idHodowla = :idHodowla")
-    , @NamedQuery(name = "OsobaHodowla.findByDataNadania", query = "SELECT o FROM OsobaHodowla o WHERE o.osobaHodowlaPK.dataNadania = :dataNadania")
-    , @NamedQuery(name = "OsobaHodowla.findByDataOdebrania", query = "SELECT o FROM OsobaHodowla o WHERE o.dataOdebrania = :dataOdebrania")})
 public class OsobaHodowla implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -5,6 +5,8 @@
  */
 package pl.edu.pb.wi.sbd.database.models;
 
+import pl.edu.pb.wi.sbd.database.TypeUser;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -15,11 +17,11 @@ import java.io.Serializable;
 @Entity
 @Table(name = "LOGIN")
 @XmlRootElement
-public class Login implements Serializable {
+@Inheritance(strategy=InheritanceType.JOINED)
+public abstract class Login implements Serializable, TypeUser{
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
     @Column(name = "id_login")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idLogin;
@@ -30,14 +32,14 @@ public class Login implements Serializable {
     @Column(name = "haslo")
     private String haslo;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "login")
-    private Hodowla hodowla;
-
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "login")
-    private Milosnik milosnik;
-
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "login")
-    private Zarzad zarzad;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "login")
+//    private Hodowla hodowla;
+//
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "login")
+//    private Milosnik milosnik;
+//
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "login")
+//    private Zarzad zarzad;
 
     public Login() {
     }
@@ -70,29 +72,29 @@ public class Login implements Serializable {
         this.haslo = haslo;
     }
 
-    public Hodowla getHodowla() {
-        return hodowla;
-    }
-
-    public void setHodowla(Hodowla hodowla) {
-        this.hodowla = hodowla;
-    }
-
-    public Milosnik getMilosnik() {
-        return milosnik;
-    }
-
-    public void setMilosnik(Milosnik milosnik) {
-        this.milosnik = milosnik;
-    }
-
-    public Zarzad getZarzad() {
-        return zarzad;
-    }
-
-    public void setZarzad(Zarzad zarzad) {
-        this.zarzad = zarzad;
-    }
+//    public Hodowla getHodowla() {
+//        return hodowla;
+//    }
+//
+//    public void setHodowla(Hodowla hodowla) {
+//        this.hodowla = hodowla;
+//    }
+//
+//    public Milosnik getMilosnik() {
+//        return milosnik;
+//    }
+//
+//    public void setMilosnik(Milosnik milosnik) {
+//        this.milosnik = milosnik;
+//    }
+//
+//    public Zarzad getZarzad() {
+//        return zarzad;
+//    }
+//
+//    public void setZarzad(Zarzad zarzad) {
+//        this.zarzad = zarzad;
+//    }
 
     @Override
     public int hashCode() {
@@ -118,5 +120,4 @@ public class Login implements Serializable {
     public String toString() {
         return "models.Login[ idLogin=" + idLogin + " ]";
     }
-
 }

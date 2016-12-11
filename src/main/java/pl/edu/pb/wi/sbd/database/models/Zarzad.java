@@ -19,18 +19,14 @@ import java.util.Date;
 @Entity
 @Table(name = "ZARZAD")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Zarzad.findAll", query = "SELECT z FROM Zarzad z")
-    , @NamedQuery(name = "Zarzad.findByIdZarzad", query = "SELECT z FROM Zarzad z WHERE z.idZarzad = :idZarzad")
-    , @NamedQuery(name = "Zarzad.findByDataNadania", query = "SELECT z FROM Zarzad z WHERE z.dataNadania = :dataNadania")
-    , @NamedQuery(name = "Zarzad.findByStatus", query = "SELECT z FROM Zarzad z WHERE z.status = :status")})
-public class Zarzad implements Serializable {
+@PrimaryKeyJoinColumn(name = "id_zarzad", referencedColumnName = "id_login")
+public class Zarzad extends Login implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "id_zarzad")
-    private Integer idZarzad;
+//    @Id
+//    @Basic(optional = false)
+//    @Column(name = "id_zarzad")
+//    private Integer idZarzad;
 
     @Type(type="date")
     @Column(name = "data_nadania")
@@ -43,23 +39,23 @@ public class Zarzad implements Serializable {
     @ManyToOne
     private Osoba idOsoba;
 
-    @JoinColumn(name = "id_zarzad", referencedColumnName = "id_login", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Login login;
+//    @JoinColumn(name = "id_zarzad", referencedColumnName = "id_login", insertable = false, updatable = false)
+//    @OneToOne(optional = false)
+//    private Login login;
 
     public Zarzad() {
     }
 
     public Zarzad(Integer idZarzad) {
-        this.idZarzad = idZarzad;
+        super(idZarzad);
     }
 
     public Integer getIdZarzad() {
-        return idZarzad;
+        return getIdLogin();
     }
 
     public void setIdZarzad(Integer idZarzad) {
-        this.idZarzad = idZarzad;
+        setIdLogin(idZarzad);
     }
 
     public Date getDataNadania() {
@@ -86,19 +82,20 @@ public class Zarzad implements Serializable {
         this.idOsoba = idOsoba;
     }
 
-    public Login getLogin() {
-        return login;
-    }
-
-    public void setLogin(Login login) {
-        this.login = login;
-    }
+//    public Login getLogin() {
+//        return login;
+//    }
+//
+//    public void setLogin(Login login) {
+//        this.login = login;
+//    }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (idZarzad != null ? idZarzad.hashCode() : 0);
-        return hash;
+//        int hash = 0;
+//        hash += (idZarzad != null ? idZarzad.hashCode() : 0);
+//        return hash;
+        return super.hashCode();
     }
 
     @Override
@@ -108,7 +105,7 @@ public class Zarzad implements Serializable {
             return false;
         }
         Zarzad other = (Zarzad) object;
-        if ((this.idZarzad == null && other.idZarzad != null) || (this.idZarzad != null && !this.idZarzad.equals(other.idZarzad))) {
+        if ((this.getIdLogin() == null && other.getIdLogin() != null) || (this.getIdLogin() != null && !this.getIdLogin().equals(other.getIdLogin()))) {
             return false;
         }
         return true;
@@ -116,7 +113,11 @@ public class Zarzad implements Serializable {
 
     @Override
     public String toString() {
-        return "models.Zarzad[ idZarzad=" + idZarzad + " ]";
+        return "models.Zarzad[ idZarzad=" + getIdLogin() + " ]";
     }
-    
+
+    @Override
+    public String write() {
+        return toString();
+    }
 }

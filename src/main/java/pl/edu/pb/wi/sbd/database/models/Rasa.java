@@ -18,11 +18,6 @@ import java.util.Collection;
 @Entity
 @Table(name = "RASA")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Rasa.findAll", query = "SELECT r FROM Rasa r")
-    , @NamedQuery(name = "Rasa.findByIdRasa", query = "SELECT r FROM Rasa r WHERE r.idRasa = :idRasa")
-    , @NamedQuery(name = "Rasa.findByRasa", query = "SELECT r FROM Rasa r WHERE r.rasa = :rasa")
-    , @NamedQuery(name = "Rasa.findByMasc", query = "SELECT r FROM Rasa r WHERE r.masc = :masc")})
 public class Rasa implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -1,7 +1,6 @@
 package pl.edu.pb.wi.sbd;
 
 import javafx.application.Application;
-import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**

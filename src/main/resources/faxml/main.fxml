@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.stage.Stage?>
-<?import javafx.scene.Scene?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.Scene?>
+<?import javafx.stage.Stage?>
 <Stage xmlns:fx="http://javafx.com/fxml/1" title="CCP - zarządzanie hodowlą" resizable="true"
        xmlns="http://javafx.com/javafx/8.0.112">
     <scene>

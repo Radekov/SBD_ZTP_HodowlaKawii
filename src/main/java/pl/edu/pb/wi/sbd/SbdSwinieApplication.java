@@ -1,12 +1,6 @@
 package pl.edu.pb.wi.sbd;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,8 +10,6 @@ import pl.edu.pb.wi.sbd.database.repository.HodowlaRepository;
 import pl.edu.pb.wi.sbd.database.repository.HodowlaStatusRepository;
 import pl.edu.pb.wi.sbd.database.repository.KlubRepository;
 import pl.edu.pb.wi.sbd.database.repository.LoginRepository;
-import pl.edu.pb.wi.sbd.dialogs.AlertBox;
-import pl.edu.pb.wi.sbd.dialogs.ConfirmBox;
 import pl.edu.pb.wi.sbd.security.HashPassword;
 
 import java.util.Date;
@@ -173,11 +165,11 @@ public class SbdSwinieApplication extends AbstractJavaFxApplicationSupport {
         */
 
 //        setFirstValues();
-
-        stage = FXMLLoader.load(getClass().getResource("/faxml/main.fxml"));
-        stage.setResizable(true);
-        stage.centerOnScreen();
-        stage.show();
+//
+//        stage = FXMLLoader.load(getClass().getResource("/faxml/main.fxml"));
+//        stage.setResizable(true);
+//        stage.centerOnScreen();
+//        stage.show();
 
     }
 
@@ -187,36 +179,35 @@ public class SbdSwinieApplication extends AbstractJavaFxApplicationSupport {
 
     private void setFirstValues(){
         //Dostępny cały CRUD resztę specyficznych zapytań poszukać w poradnikach - dodawać w interfejsie
-        LoginRepository loginRepository = Context.getInstance().getBean(LoginRepository.class);
+//        LoginRepository loginRepository = Context.getInstance().getBean(LoginRepository.class);
 //        Login l = new Login();
 //        l.setHaslo(HashPassword.get_SHA_512_SecurePassword("q"));
 //        l.setNazwa("q");
 //        l = loginRepository.save(l);
 //
         KlubRepository klubRepository = Context.getInstance().getBean(KlubRepository.class);
-//        Klub k = new Klub();
-//        k.setKraj("Polska");
-//        k.setNazwa("Cavies Club of Poland");
-//        k = klubRepository.save(k);
+        Klub k = new Klub();
+        k.setKraj("Polska");
+        k.setNazwa("Cavies Club of Poland");
+        k = klubRepository.save(k);
 
         HodowlaRepository hodowlaRepository = Context.getInstance().getBean(HodowlaRepository.class);
-//        Login l = loginRepository.findOne(1);
-//        System.out.println(l);
-//        Hodowla h = new Hodowla(l);
-//        h.setNazwaHodowla("Świńskie Kresy");
-//        h.setIdKlub(klubRepository.findOne(1));
+        Hodowla h = new Hodowla();
+        h.setNazwaHodowla("Świńskie Kresy");
+        h.setIdKlub(k);
+        h.setHaslo(HashPassword.get_SHA_512_SecurePassword("q"));
+        h.setNazwa("q");
 //        h.setLogin(l);
 //        h.setIdHodowla(l.getIdLogin());
-//        System.out.println(h);
-//        h = hodowlaRepository.save(h);
+        System.out.println("--------------------------------"+ h);
+        h = hodowlaRepository.save(h);
 //
-        Hodowla h = hodowlaRepository.findOne(1);
-//        HodowlaStatusRepository hodowlaStatusRepository = Context.getInstance().getBean(HodowlaStatusRepository.class);
-//        HodowlaStatus hs = new HodowlaStatus();
-//        hs.setHodowlaStatusPK(new HodowlaStatusPK(h.getIdHodowla(),new Date()));
-//        hs.setStatus("AKTYWNY");
-//        hs.setHodowla(h);
-//        hs = hodowlaStatusRepository.save(hs);
+        HodowlaStatusRepository hodowlaStatusRepository = Context.getInstance().getBean(HodowlaStatusRepository.class);
+        HodowlaStatus hs = new HodowlaStatus();
+        hs.setHodowlaStatusPK(new HodowlaStatusPK(h.getIdHodowla(),new Date()));
+        hs.setStatus("AKTYWNY");
+        hs.setHodowla(h);
+        hs = hodowlaStatusRepository.save(hs);
     }
 
     /*

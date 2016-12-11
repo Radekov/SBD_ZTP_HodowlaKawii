@@ -5,8 +5,6 @@
  */
 package pl.edu.pb.wi.sbd.database.models;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -19,7 +17,6 @@ import java.util.Date;
 @Entity
 @Table(name = "HODOWLA_STATUS")
 @XmlRootElement
-//TODO zmienieć mapowanie, dwa Klucze Obce: id_Hodowla, Data - dodać HodowlaStatusPK
 public class HodowlaStatus implements Serializable {
 
     private static final long serialVersionUID = 1L;

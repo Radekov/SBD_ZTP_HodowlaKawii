@@ -20,13 +20,6 @@ import java.util.Date;
 @Entity
 @Table(name = "WLASCICIEL_KAWIA")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "WlascicielKawia.findAll", query = "SELECT w FROM WlascicielKawia w")
-    , @NamedQuery(name = "WlascicielKawia.findByIdKawia", query = "SELECT w FROM WlascicielKawia w WHERE w.wlascicielKawiaPK.idKawia = :idKawia")
-    , @NamedQuery(name = "WlascicielKawia.findByIdOsoba", query = "SELECT w FROM WlascicielKawia w WHERE w.wlascicielKawiaPK.idOsoba = :idOsoba")
-    , @NamedQuery(name = "WlascicielKawia.findByDataZakupu", query = "SELECT w FROM WlascicielKawia w WHERE w.wlascicielKawiaPK.dataZakupu = :dataZakupu")
-    , @NamedQuery(name = "WlascicielKawia.findByDataZwrotu", query = "SELECT w FROM WlascicielKawia w WHERE w.dataZwrotu = :dataZwrotu")
-    , @NamedQuery(name = "WlascicielKawia.findByKwota", query = "SELECT w FROM WlascicielKawia w WHERE w.kwota = :kwota")})
 public class WlascicielKawia implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -17,11 +17,6 @@ import java.util.Date;
 @Entity
 @Table(name = "WAGA")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Waga.findAll", query = "SELECT w FROM Waga w")
-    , @NamedQuery(name = "Waga.findByIdKawia", query = "SELECT w FROM Waga w WHERE w.wagaPK.idKawia = :idKawia")
-    , @NamedQuery(name = "Waga.findByDataWazenia", query = "SELECT w FROM Waga w WHERE w.wagaPK.dataWazenia = :dataWazenia")
-    , @NamedQuery(name = "Waga.findByWaga", query = "SELECT w FROM Waga w WHERE w.waga = :waga")})
 public class Waga implements Serializable {
 
     private static final long serialVersionUID = 1L;

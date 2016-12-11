@@ -18,11 +18,6 @@ import java.util.Collection;
 @Entity
 @Table(name = "KAWIA")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Kawia.findAll", query = "SELECT k FROM Kawia k")
-    , @NamedQuery(name = "Kawia.findByIdKawia", query = "SELECT k FROM Kawia k WHERE k.idKawia = :idKawia")
-    , @NamedQuery(name = "Kawia.findByNrIndywidualny", query = "SELECT k FROM Kawia k WHERE k.nrIndywidualny = :nrIndywidualny")
-    , @NamedQuery(name = "Kawia.findByPlec", query = "SELECT k FROM Kawia k WHERE k.plec = :plec")})
 public class Kawia implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,11 +27,14 @@ public class Kawia implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idKawia;
 
+    @Column(name = "imie")
+    private String imie;
+
     @Column(name = "nr_indywidualny")
     private String nrIndywidualny;
 
     @Column(name = "plec")
-    private Integer plec;
+    private Boolean plec;
 
     @ManyToMany(mappedBy = "kawiaCollection")
     private Collection<Hodowla> hodowlaCollection;
@@ -87,11 +85,19 @@ public class Kawia implements Serializable {
         this.nrIndywidualny = nrIndywidualny;
     }
 
-    public Integer getPlec() {
+    public String getImie() {
+        return imie;
+    }
+
+    public void setImie(String imie) {
+        this.imie = imie;
+    }
+
+    public Boolean getPlec() {
         return plec;
     }
 
-    public void setPlec(Integer plec) {
+    public void setPlec(Boolean plec) {
         this.plec = plec;
     }
 

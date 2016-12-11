@@ -1,45 +1,42 @@
 package pl.edu.pb.wi.sbd.database.models;
 
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.Collection;
 
 /**
- *
  * @author R
  */
 @Entity
 @Table(name = "HODOWLA")
 @XmlRootElement
-public class Hodowla implements Serializable {
+@PrimaryKeyJoinColumn(name = "id_hodowla", referencedColumnName = "id_login")
+public class Hodowla extends Login implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @GenericGenerator(name="gen", strategy="foreign", parameters={@org.hibernate.annotations.Parameter(name="property", value="login")})
-    @Id
-    @GeneratedValue(generator = "gen")
-    @Column(name = "id_hodowla", unique = true, nullable = false)
-    private Integer idHodowla;
+//    @GenericGenerator(name="gen", strategy="foreign", parameters={@org.hibernate.annotations.Parameter(name="property", value="login")})
+//    @Id
+//    @GeneratedValue(generator = "gen")
+//    @Column(name = "id_hodowla", unique = true, nullable = false)
+//    private Integer idHodowla;
 
     @Column(name = "nazwa_hodowla")
     private String nazwaHodowla;
 
     @JoinTable(name = "HODOWLA_KAWIA", joinColumns = {
-        @JoinColumn(name = "id_hodowla", referencedColumnName = "id_hodowla")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_kawia", referencedColumnName = "id_kawia")})
+            @JoinColumn(name = "id_hodowla", referencedColumnName = "id_hodowla")}, inverseJoinColumns = {
+            @JoinColumn(name = "id_kawia", referencedColumnName = "id_kawia")})
     @ManyToMany
     private Collection<Kawia> kawiaCollection;
 
     @JoinTable(name = "HODOWLA_RASA", joinColumns = {
-        @JoinColumn(name = "id_hodowla", referencedColumnName = "id_hodowla")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_rasa", referencedColumnName = "id_rasa")})
+            @JoinColumn(name = "id_hodowla", referencedColumnName = "id_hodowla")}, inverseJoinColumns = {
+            @JoinColumn(name = "id_rasa", referencedColumnName = "id_rasa")})
     @ManyToMany
     private Collection<Rasa> rasaCollection;
 
@@ -53,9 +50,9 @@ public class Hodowla implements Serializable {
     @ManyToOne
     private Klub idKlub;
 
-    @JoinColumn(name = "id_hodowla", referencedColumnName = "id_login", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Login login;
+//    @JoinColumn(name = "id_hodowla", referencedColumnName = "id_login", insertable = false, updatable = false)
+//    @OneToOne(fetch = FetchType.EAGER, optional = false)
+//    private Login login;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hodowla")
     private Collection<OsobaHodowla> osobaHodowlaCollection;
@@ -64,19 +61,19 @@ public class Hodowla implements Serializable {
     }
 
     public Hodowla(Integer idHodowla) {
-        this.idHodowla = idHodowla;
+        super(idHodowla);
     }
 
-    public Hodowla(Login login) {
-        this.login = login;
-    }
+//    public Hodowla(Login login) {
+//        this.login = login;
+//    }
 
     public Integer getIdHodowla() {
-        return idHodowla;
+        return getIdLogin();
     }
 
     public void setIdHodowla(Integer idHodowla) {
-        this.idHodowla = idHodowla;
+        setIdLogin(idHodowla);
     }
 
     public String getNazwaHodowla() {
@@ -130,13 +127,13 @@ public class Hodowla implements Serializable {
         this.idKlub = idKlub;
     }
 
-    public Login getLogin() {
-        return login;
-    }
-
-    public void setLogin(Login login) {
-        this.login = login;
-    }
+//    public Login getLogin() {
+//        return login;
+//    }
+//
+//    public void setLogin(Login login) {
+//        this.login = login;
+//    }
 
     @XmlTransient
     public Collection<OsobaHodowla> getOsobaHodowlaCollection() {
@@ -149,9 +146,11 @@ public class Hodowla implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (idHodowla != null ? idHodowla.hashCode() : 0);
-        return hash;
+//        int hash = 0;
+//        hash += (idHodowla != null ? idHodowla.hashCode() : 0);
+//        return hash;
+        return super.
+                hashCode();
     }
 
     @Override
@@ -161,7 +160,7 @@ public class Hodowla implements Serializable {
             return false;
         }
         Hodowla other = (Hodowla) object;
-        if ((this.idHodowla == null && other.idHodowla != null) || (this.idHodowla != null && !this.idHodowla.equals(other.idHodowla))) {
+        if ((this.getIdLogin() == null && other.getIdLogin() != null) || (this.getIdLogin() != null && !this.getIdLogin().equals(other.getIdLogin()))) {
             return false;
         }
         return true;
@@ -169,7 +168,19 @@ public class Hodowla implements Serializable {
 
     @Override
     public String toString() {
-        return "models.Hodowla[ idHodowla=" + idHodowla + " ]";
+        return "models.Hodowla[ idHodowla=" + getIdLogin() + " ]";
     }
-    
+
+    @Override
+    public String write() {
+        //Leniwe podejście FIXME
+        HodowlaStatus[] statuss =(HodowlaStatus[]) hodowlaStatusCollection.toArray();
+        HodowlaStatus status = statuss[0];
+        for (HodowlaStatus s :
+                statuss) {
+                if (status.getHodowlaStatusPK().getDate().compareTo(s.getHodowlaStatusPK().getDate()) > 0)
+                    status = s;
+        }
+        return("Hodowla: " + nazwaHodowla + " Status: " + status.getStatus());
+    }
 }

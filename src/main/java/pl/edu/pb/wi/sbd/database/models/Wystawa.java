@@ -21,16 +21,6 @@ import java.util.Date;
 @Entity
 @Table(name = "WYSTAWA")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Wystawa.findAll", query = "SELECT w FROM Wystawa w")
-    , @NamedQuery(name = "Wystawa.findByIdWystawa", query = "SELECT w FROM Wystawa w WHERE w.idWystawa = :idWystawa")
-    , @NamedQuery(name = "Wystawa.findByDataWystawy", query = "SELECT w FROM Wystawa w WHERE w.dataWystawy = :dataWystawy")
-    , @NamedQuery(name = "Wystawa.findByMiasto", query = "SELECT w FROM Wystawa w WHERE w.miasto = :miasto")
-    , @NamedQuery(name = "Wystawa.findByUlica", query = "SELECT w FROM Wystawa w WHERE w.ulica = :ulica")
-    , @NamedQuery(name = "Wystawa.findByKodPocztowy", query = "SELECT w FROM Wystawa w WHERE w.kodPocztowy = :kodPocztowy")
-    , @NamedQuery(name = "Wystawa.findByTelefon", query = "SELECT w FROM Wystawa w WHERE w.telefon = :telefon")
-    , @NamedQuery(name = "Wystawa.findByNrDomu", query = "SELECT w FROM Wystawa w WHERE w.nrDomu = :nrDomu")
-    , @NamedQuery(name = "Wystawa.findByNrLokalu", query = "SELECT w FROM Wystawa w WHERE w.nrLokalu = :nrLokalu")})
 public class Wystawa implements Serializable {
 
     private static final long serialVersionUID = 1L;

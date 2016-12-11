@@ -16,10 +16,6 @@ import java.io.Serializable;
 @Entity
 @Table(name = "KAWIA_TYTUL")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "KawiaTytul.findAll", query = "SELECT k FROM KawiaTytul k")
-    , @NamedQuery(name = "KawiaTytul.findByIdKawia", query = "SELECT k FROM KawiaTytul k WHERE k.kawiaTytulPK.idKawia = :idKawia")
-    , @NamedQuery(name = "KawiaTytul.findByIdTytul", query = "SELECT k FROM KawiaTytul k WHERE k.kawiaTytulPK.idTytul = :idTytul")})
 public class KawiaTytul implements Serializable {
 
     private static final long serialVersionUID = 1L;

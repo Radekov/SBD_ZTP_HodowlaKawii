@@ -18,15 +18,6 @@ import java.util.Collection;
 @Entity
 @Table(name = "OSOBA")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Osoba.findAll", query = "SELECT o FROM Osoba o")
-    , @NamedQuery(name = "Osoba.findByIdOsoba", query = "SELECT o FROM Osoba o WHERE o.idOsoba = :idOsoba")
-    , @NamedQuery(name = "Osoba.findByImie", query = "SELECT o FROM Osoba o WHERE o.imie = :imie")
-    , @NamedQuery(name = "Osoba.findByNazwisko", query = "SELECT o FROM Osoba o WHERE o.nazwisko = :nazwisko")
-    , @NamedQuery(name = "Osoba.findByMiasto", query = "SELECT o FROM Osoba o WHERE o.miasto = :miasto")
-    , @NamedQuery(name = "Osoba.findByUlica", query = "SELECT o FROM Osoba o WHERE o.ulica = :ulica")
-    , @NamedQuery(name = "Osoba.findByKodPocztowy", query = "SELECT o FROM Osoba o WHERE o.kodPocztowy = :kodPocztowy")
-    , @NamedQuery(name = "Osoba.findByTelefon", query = "SELECT o FROM Osoba o WHERE o.telefon = :telefon")})
 public class Osoba implements Serializable {
 
     private static final long serialVersionUID = 1L;
