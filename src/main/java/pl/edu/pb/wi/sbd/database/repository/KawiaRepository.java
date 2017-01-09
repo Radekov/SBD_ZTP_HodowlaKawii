@@ -20,4 +20,12 @@ public interface KawiaRepository extends JpaRepository<Kawia,Integer> {
              "AND o.idOsoba = oh.osobaHodowlaPK.idOsoba " +
              "AND oh.osobaHodowlaPK.idHodowla = :idHodowla")
     public List<Kawia> findByWlasiciel(@Param("idHodowla") Integer idHodowla);
+
+    @Query("SELECT k " +
+            "FROM Kawia k, WlascicielKawia wk, Osoba o, Milosnik m "+
+            "WHERE :idMilosnik = o.idOsoba " +
+            "AND o.idOsoba = wk.wlascicielKawiaPK.idOsoba " +
+            "AND wk.dataZwrotu IS NULL " +
+            "AND wk.wlascicielKawiaPK.idKawia = k.idKawia ")
+    public List<Kawia> findByAllCaviesBelongToLover(@Param("idMilosnik") Integer idMilosnik);
 }

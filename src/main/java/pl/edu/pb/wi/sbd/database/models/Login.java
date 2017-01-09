@@ -5,7 +5,7 @@
  */
 package pl.edu.pb.wi.sbd.database.models;
 
-import pl.edu.pb.wi.sbd.database.TypeUser;
+import pl.edu.pb.wi.sbd.controllers.models.OwnerCavies;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Table(name = "LOGIN")
 @XmlRootElement
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class Login implements Serializable, TypeUser{
+public abstract class Login implements Serializable, OwnerCavies{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -71,30 +71,6 @@ public abstract class Login implements Serializable, TypeUser{
     public void setHaslo(String haslo) {
         this.haslo = haslo;
     }
-
-//    public Hodowla getHodowla() {
-//        return hodowla;
-//    }
-//
-//    public void setHodowla(Hodowla hodowla) {
-//        this.hodowla = hodowla;
-//    }
-//
-//    public Milosnik getMilosnik() {
-//        return milosnik;
-//    }
-//
-//    public void setMilosnik(Milosnik milosnik) {
-//        this.milosnik = milosnik;
-//    }
-//
-//    public Zarzad getZarzad() {
-//        return zarzad;
-//    }
-//
-//    public void setZarzad(Zarzad zarzad) {
-//        this.zarzad = zarzad;
-//    }
 
     @Override
     public int hashCode() {

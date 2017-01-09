@@ -48,8 +48,8 @@ public class Osoba implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "osoba")
     private Collection<OsobaHodowla> osobaHodowlaCollection;
 
-    @OneToMany(mappedBy = "idOsoba")
-    private Collection<Milosnik> milosnikCollection;
+    @OneToOne(mappedBy = "idOsoba")
+    private Milosnik milosnik;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "osoba")
     private Collection<WlascicielKawia> wlascicielKawiaCollection;
@@ -132,13 +132,13 @@ public class Osoba implements Serializable {
         this.osobaHodowlaCollection = osobaHodowlaCollection;
     }
 
-    @XmlTransient
-    public Collection<Milosnik> getMilosnikCollection() {
-        return milosnikCollection;
+
+    public Milosnik getMilosnik() {
+        return milosnik;
     }
 
-    public void setMilosnikCollection(Collection<Milosnik> milosnikCollection) {
-        this.milosnikCollection = milosnikCollection;
+    public void setMilosnik(Milosnik milosnik) {
+        this.milosnik = milosnik;
     }
 
     @XmlTransient

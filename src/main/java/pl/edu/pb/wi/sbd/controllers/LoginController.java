@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
  */
 //Dlaczego Controller
 //http://stackoverflow.com/questions/6827752/whats-the-difference-between-component-repository-service-annotations-in
-@Controller
+    //NIEUZYWANE
 public class LoginController implements Initializable {
 
     @FXML
@@ -106,7 +106,7 @@ public class LoginController implements Initializable {
             return;
         }
         System.out.println("Zalogowano");
-        Context.setLogged(result);
+//        Context.setLogged(result);
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/faxml/userController.fxml"));

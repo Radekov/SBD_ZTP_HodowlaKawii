@@ -6,6 +6,7 @@ import pl.edu.pb.wi.sbd.database.models.Rasa;
 
 /**
  * Created by Radosław Naruszewicz on 2016-12-06.
- */@Repository
+ */
 public interface RasaRepository extends JpaRepository<Rasa,Integer> {
+     Rasa findByRasaAndMasc(String rasa, String masc);
 }

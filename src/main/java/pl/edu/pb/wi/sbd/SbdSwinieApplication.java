@@ -27,10 +27,12 @@ public class SbdSwinieApplication extends AbstractJavaFxApplicationSupport {
 
     @Override
     public void start(Stage stage) throws Exception {
-
-        stage = FXMLLoader.load(getClass().getResource("/faxml/main.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        Scene scene = new Scene(root);
         stage.setResizable(true);
         stage.centerOnScreen();
+        stage.setScene(scene);
         stage.show();
         window = stage;
 

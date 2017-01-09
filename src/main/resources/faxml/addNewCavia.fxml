@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.AddNewCaviaController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="166.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="488.0" minWidth="10.0" prefWidth="363.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="488.0" minWidth="0.0" prefWidth="20.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="488.0" minWidth="0.0" prefWidth="29.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label prefHeight="25.0" prefWidth="30.0" text="Imię" />
+      <Label prefHeight="30.0" prefWidth="43.0" text="Rasa" GridPane.rowIndex="2" />
+      <Label prefHeight="31.0" prefWidth="40.0" text="Maść" GridPane.rowIndex="3" />
+      <Button fx:id="addButton" mnemonicParsing="false" onAction="#confirmAddNew" text="Dodaj" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelAddNew" text="Anuluj" GridPane.rowIndex="5" />
+      <ChoiceBox fx:id="rasaSelect" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <ChoiceBox fx:id="mascSelect" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label prefHeight="68.0" prefWidth="104.0" text="Numer indywidualny" GridPane.rowIndex="1" />
+      <TextField fx:id="nrCaviaField" prefHeight="27.0" prefWidth="24.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="nameCaviaField" GridPane.columnIndex="1" />
+      <Label text="Osobnik" GridPane.columnIndex="2" />
+      <Label text="Imię" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Label text="Nazwisko" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Label text="Radosław" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <Label text="Naruszewicz" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <ChoiceBox prefWidth="150.0" GridPane.columnIndex="3" />
+      <Label text="Płeć" GridPane.rowIndex="4" />
+      <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <children>
+            <RadioButton mnemonicParsing="false" selected="true" text="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <toggleGroup>
+                  <ToggleGroup fx:id="sex" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="01" toggleGroup="$sex" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</GridPane>

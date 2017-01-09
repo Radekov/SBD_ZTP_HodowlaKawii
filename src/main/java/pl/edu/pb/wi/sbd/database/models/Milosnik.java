@@ -6,11 +6,16 @@
 package pl.edu.pb.wi.sbd.database.models;
 
 import org.hibernate.annotations.Type;
+import pl.edu.pb.wi.sbd.Context;
+import pl.edu.pb.wi.sbd.controllers.models.OwnerCavies;
+import pl.edu.pb.wi.sbd.database.repository.KawiaRepository;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -34,7 +39,7 @@ public class Milosnik extends Login implements Serializable {
     @Column(name = "aktywnosc")
     private Integer aktywnosc;
     @JoinColumn(name = "id_osoba", referencedColumnName = "id_osoba")
-    @ManyToOne
+    @OneToOne
     private Osoba idOsoba;
 //    @JoinColumn(name = "id_milosnik", referencedColumnName = "id_login", insertable = false, updatable = false)
 //    @OneToOne(optional = false)
@@ -114,7 +119,8 @@ public class Milosnik extends Login implements Serializable {
     }
 
     @Override
-    public String write() {
-        return toString();
+    public List<Kawia> getAllCavies() {
+        KawiaRepository kawiaRepository = Context.getInstance().getBean(KawiaRepository.class);
+        return kawiaRepository.findByAllCaviesBelongToLover(getIdMilosnik());
     }
 }

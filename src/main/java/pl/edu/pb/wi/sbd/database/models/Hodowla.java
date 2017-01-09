@@ -1,13 +1,16 @@
 package pl.edu.pb.wi.sbd.database.models;
 
 import org.hibernate.annotations.GenericGenerator;
+import pl.edu.pb.wi.sbd.controllers.models.OwnerCavies;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author R
@@ -16,7 +19,7 @@ import java.util.Iterator;
 @Table(name = "HODOWLA")
 @XmlRootElement
 @PrimaryKeyJoinColumn(name = "id_hodowla", referencedColumnName = "id_login")
-public class Hodowla extends Login implements Serializable {
+public class Hodowla extends Login implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
@@ -173,20 +176,25 @@ public class Hodowla extends Login implements Serializable {
     }
 
     @Override
-    public String write() {
-        //Leniwe podejście FIXME
-        HodowlaStatus status = null;
-        Iterator itr = hodowlaStatusCollection.iterator();
-        if(itr.hasNext())
-            status = (HodowlaStatus) itr.next();
-        if (status == null) {
-            return ("Hodowla: " + nazwaHodowla + " Status: " + "nieznay");
-        }
-        while (itr.hasNext()) {
-            HodowlaStatus s = (HodowlaStatus) itr.next();
-            if (status.getHodowlaStatusPK().getDate().compareTo(s.getHodowlaStatusPK().getDate()) > 0)
-                status = s;
-        }
-        return ("Hodowla: " + nazwaHodowla + " Status: " + status.getStatus());
+    public List<Kawia> getAllCavies() {
+        return new ArrayList<Kawia>(getKawiaCollection());
     }
+
+//    @Override
+//    public String write() {
+//        //Leniwe podejście FIXME
+//        HodowlaStatus status = null;
+//        Iterator itr = hodowlaStatusCollection.iterator();
+//        if(itr.hasNext())
+//            status = (HodowlaStatus) itr.next();
+//        if (status == null) {
+//            return ("Hodowla: " + nazwaHodowla + " Status: " + "nieznay");
+//        }
+//        while (itr.hasNext()) {
+//            HodowlaStatus s = (HodowlaStatus) itr.next();
+//            if (status.getHodowlaStatusPK().getDate().compareTo(s.getHodowlaStatusPK().getDate()) > 0)
+//                status = s;
+//        }
+//        return ("Hodowla: " + nazwaHodowla + " Status: " + status.getStatus());
+//    }
 }

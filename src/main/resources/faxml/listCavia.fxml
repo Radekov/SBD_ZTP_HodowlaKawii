@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<Tab text="Świnie" xmlns="http://javafx.com/javafx/8"
+     xmlns:fx="http://javafx.com/fxml/1" >
+    <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+                <BorderPane prefHeight="589.0" prefWidth="1280.0">
+                    <left>
+                        <ListView fx:id="listViewCategory" prefHeight="582.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                    </left>
+                    <center>
+
+                    </center>
+                    <center>
+                        <VBox alignment="TOP_RIGHT">
+                            <children>
+                                <TableView fx:id="tableCavia" prefHeight="563.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+                                    <columns>
+                                        <TableColumn fx:id="imieColumn" prefWidth="75.0" text="Imie" />
+                                        <TableColumn fx:id="nrIndywidualnyColumn" prefWidth="75.0" text="nr indywidualny" />
+                                        <TableColumn fx:id="rasaColumn" prefWidth="75.0" text="rasa" />
+                                        <TableColumn fx:id="przydomekColumn" prefWidth="75.0" text="przydomek" />
+                                        <TableColumn fx:id="plecColumn" prefWidth="75.0" text="płeć" />
+                                    </columns>
+                                </TableView>
+                                <Button fx:id="addNewCaviaButton" onAction="#addCaviaClick" text="Dodaj nową kawie" />
+                            </children>
+                        </VBox>
+                    </center>
+                </BorderPane>
+            </children>
+        </AnchorPane>
+    </content>
+</Tab>

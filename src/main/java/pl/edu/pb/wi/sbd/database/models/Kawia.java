@@ -9,7 +9,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.*;
 
 /**
  *
@@ -39,6 +39,7 @@ public class Kawia implements Serializable {
     @ManyToMany(mappedBy = "kawiaCollection")
     private Collection<Hodowla> hodowlaCollection;
 
+    //Rodzic
     @OneToMany(mappedBy = "kawia")
     private Collection<Miot> miotCollection;
 
@@ -46,13 +47,16 @@ public class Kawia implements Serializable {
     @ManyToOne
     private Rasa idRasa;
 
+    //Skąd pochodzi
     @JoinColumn(name = "id_miot", referencedColumnName = "id_miot")
+    //W miocie może być kilku, jak i tylko jedno
     @ManyToOne
     private Miot idMiot;
 
     @OneToMany(mappedBy = "kawia")
     private Collection<Waga> wagaCollection;
 
+    //Historia właścicieli
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "kawia")
     private Collection<WlascicielKawia> wlascicielKawiaCollection;
 
@@ -67,6 +71,16 @@ public class Kawia implements Serializable {
 
     public Kawia(Integer idKawia) {
         this.idKawia = idKawia;
+    }
+
+    public Double getLastWaga(){
+        Waga w = Collections.max(getWagaCollection(), new Comparator<Waga>() {
+            @Override
+            public int compare(Waga o1, Waga o2) {
+                return o1.getWagaPK().getDataWazenia().compareTo(o2.getWagaPK().getDataWazenia());
+            }
+        });
+        return w.getWaga();
     }
 
     public Integer getIdKawia() {

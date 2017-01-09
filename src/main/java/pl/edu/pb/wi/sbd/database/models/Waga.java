@@ -8,6 +8,7 @@ package pl.edu.pb.wi.sbd.database.models;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -89,5 +90,4 @@ public class Waga implements Serializable {
     public String toString() {
         return "models.Waga[ wagaPK=" + wagaPK + " ]";
     }
-    
 }

@@ -9,8 +9,9 @@ import pl.edu.pb.wi.sbd.database.models.Login;
  */
 public class Context {
     private static ConfigurableApplicationContext context;
+    public static Context CONTEXT = new Context();
 
-    private static Login logged = null;
+    private Login logged = null;
 
     private Context() {
     }
@@ -22,11 +23,11 @@ public class Context {
         return context;
     }
 
-    public static Login getLogged() {
+    public Login getLogged() {
         return logged;
     }
 
-    public static void setLogged(Login logged) {
-        Context.logged = logged;
+    public void setLogged(Login logged) {
+        logged = logged;
     }
 }

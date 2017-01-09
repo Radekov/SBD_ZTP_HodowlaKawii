@@ -15,7 +15,7 @@ import pl.edu.pb.wi.sbd.database.models.Login;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+//NIEUZYWANE
 public class ToolbarController implements Initializable {
 
     @FXML
@@ -23,10 +23,10 @@ public class ToolbarController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (Context.getLogged() == null)
-            setImage(null);
-        else
-            setImage(Context.getLogged());
+//        if (Context.getLogged() == null)
+//            setImage(null);
+//        else
+//            setImage(Context.getLogged());
     }
 
     public void setImage(Login l) {
