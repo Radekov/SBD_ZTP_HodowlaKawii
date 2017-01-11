@@ -3,9 +3,7 @@ package pl.edu.pb.wi.sbd.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.springframework.context.ConfigurableApplicationContext;
 import pl.edu.pb.wi.sbd.Context;
 import pl.edu.pb.wi.sbd.database.models.Hodowla;
@@ -19,68 +17,86 @@ import java.util.ResourceBundle;
 /**
  * Created by Radosław Naruszewicz on 2016-12-14.
  */
-//NIEUZYWANE
-public class AddNewCaviaController implements Initializable{
+public class AddNewCaviaController extends AbstractController{
 
     @FXML
-    Button addButton;
-    @FXML
-    Button cancelButton;
+    private RadioButton radio_button_female;
 
     @FXML
-    ChoiceBox<String> rasaSelect;
-    @FXML
-    ChoiceBox<String> mascSelect;
+    private Label label_mother_race;
 
     @FXML
-    TextField nameCaviaField;
-    @FXML TextField nrCaviaField;
+    private TextField text_przydomek;
 
-    ConfigurableApplicationContext context = Context.getInstance();
+    @FXML
+    private TextField text_race;
 
-    String rasa;
-    String masc;
+    @FXML
+    private Label label_father_przydomek;
+
+    @FXML
+    private RadioButton radio_button_male;
+
+    @FXML
+    private Label label_error;
+
+    @FXML
+    private Label label_mother_colour;
+
+    @FXML
+    private DatePicker date_picker_born;
+
+    @FXML
+    private Label label_father_colour;
+
+    @FXML
+    private ComboBox<Kawia> combo_mother;
+
+    @FXML
+    private Button button_back;
+
+    @FXML
+    private ComboBox<Kawia> combo_father;
+
+    @FXML
+    private Label label_mother_przydomek;
+
+    @FXML
+    private TextField text_weight;
+
+    @FXML
+    private Label label_father_race;
+
+    @FXML
+    private TextField text_name;
+
+    @FXML
+    private Button button_add_new_cavia;
+
+    @FXML
+    private TextField text_colour;
+
+    @FXML
+    private CheckBox checkbox_owner;
+
+    @FXML
+    private Label label_mother_name;
+
+    @FXML
+    private Label label_father_name;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        rasaSelect.getItems().addAll("Sheltie","Texel");
-        mascSelect.getItems().addAll("Czekoladowe","Czarne");
 
-        rasaSelect.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> {
-                    rasa = newValue;
-                });
-
-        mascSelect.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> {
-                    masc = newValue;
-                });
     }
 
     @FXML
-    public void confirmAddNew(ActionEvent event){
-        String name = nameCaviaField.getText();
-        String nrCavia = nrCaviaField.getText();
+    void actionAddNewCavia(ActionEvent event) {
 
-        Kawia kawia = new Kawia();
-        kawia.setImie(name);
-        kawia.setNrIndywidualny(nrCavia);
-
-        Rasa rasa = new Rasa();
-        rasa.setMasc(masc);
-        rasa.setRasa(this.rasa);
-        RasaRepository rasaRepository = context.getBean(RasaRepository.class);
-        Rasa result = rasaRepository.findByRasaAndMasc(masc,this.rasa);
-        if(result == null){
-            result = rasaRepository.save(rasa);
-        }
-        kawia.setIdRasa(result);
-//        kawia.getHodowlaCollection().add((Hodowla)Context.getLogged());
-//        kawia.set
     }
 
     @FXML
-    public void cancelAddNew(ActionEvent event){
+    void actionCancelAddNewCavia(ActionEvent event) {
 
     }
 
