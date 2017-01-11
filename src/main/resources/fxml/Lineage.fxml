@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="521.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="pl.edu.pb.wi.sbd.controllers.LineageController">
+   <children>
+      <Pane layoutX="4.0" layoutY="3.0" prefHeight="395.0" prefWidth="515.0">
+         <children>
+            <VBox layoutX="107.0" layoutY="20.0" prefHeight="153.0" prefWidth="302.0">
+               <children>
+                  <ComboBox fx:id="combo_kawii" prefWidth="150.0" promptText="Wybierz kawię" />
+                  <GridPane prefHeight="149.0" prefWidth="302.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                           <children>
+                              <Label fx:id="label_kawia_name" prefHeight="17.0" prefWidth="158.0" />
+                              <Label fx:id="label_kawia_przydomek" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="160.0" />
+                              <Label fx:id="label_kawia_race" layoutX="10.0" layoutY="102.0" prefHeight="17.0" prefWidth="168.0" />
+                              <Label fx:id="label_kawia_colour" layoutX="10.0" layoutY="127.0" prefHeight="17.0" prefWidth="168.0" />
+                              <Label fx:id="label_kawia_sex" prefHeight="17.0" prefWidth="160.0" />
+                              <Label fx:id="label_kawia_birthday" prefHeight="17.0" prefWidth="160.0" />
+                              <Label fx:id="label_kawia_weight" prefHeight="17.0" prefWidth="160.0" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="164.0" prefWidth="148.0">
+                           <children>
+                              <Label text="Imię" />
+                              <Label layoutX="10.0" layoutY="10.0" text="Przydomek" />
+                              <Label layoutX="10.0" layoutY="78.0" text="Rasa" />
+                              <Label layoutX="10.0" layoutY="95.0" text="Umaszczenie" />
+                              <Label text="Płeć" />
+                              <Label text="Data urodzenia" />
+                              <Label text="Waga (g)" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.0" minWidth="10.0" prefWidth="126.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="132.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="291.0" minHeight="10.0" prefHeight="291.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </VBox>
+            <GridPane layoutX="14.0" layoutY="209.0" prefHeight="93.0" prefWidth="218.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label fx:id="label_kawia_name1" prefHeight="17.0" prefWidth="158.0" />
+                        <Label fx:id="label_kawia_przydomek1" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="160.0" />
+                        <Label fx:id="label_kawia_race1" layoutX="10.0" layoutY="102.0" prefHeight="17.0" prefWidth="168.0" />
+                        <Label fx:id="label_kawia_colour1" layoutX="10.0" layoutY="127.0" prefHeight="17.0" prefWidth="168.0" />
+                        <Label fx:id="label_kawia_birthday1" prefHeight="17.0" prefWidth="160.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="164.0" prefWidth="148.0">
+                     <children>
+                        <Label text="Imię" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Przydomek" />
+                        <Label layoutX="10.0" layoutY="78.0" text="Rasa" />
+                        <Label layoutX="10.0" layoutY="95.0" text="Umaszczenie" />
+                        <Label text="Data urodzenia" />
+                     </children>
+                  </VBox>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.0" minWidth="10.0" prefWidth="126.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="132.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="291.0" minHeight="10.0" prefHeight="291.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane layoutX="258.0" layoutY="209.0" prefHeight="93.0" prefWidth="218.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label fx:id="label_kawia_name11" prefHeight="17.0" prefWidth="158.0" />
+                        <Label fx:id="label_kawia_przydomek11" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="160.0" />
+                        <Label fx:id="label_kawia_race11" layoutX="10.0" layoutY="102.0" prefHeight="17.0" prefWidth="168.0" />
+                        <Label fx:id="label_kawia_colour11" layoutX="10.0" layoutY="127.0" prefHeight="17.0" prefWidth="168.0" />
+                        <Label fx:id="label_kawia_birthday11" prefHeight="17.0" prefWidth="160.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="164.0" prefWidth="148.0">
+                     <children>
+                        <Label text="Imię" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Przydomek" />
+                        <Label layoutX="10.0" layoutY="78.0" text="Rasa" />
+                        <Label layoutX="10.0" layoutY="95.0" text="Umaszczenie" />
+                        <Label text="Data urodzenia" />
+                     </children>
+                  </VBox>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.0" minWidth="10.0" prefWidth="126.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="132.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="291.0" minHeight="10.0" prefHeight="291.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Label layoutX="14.0" layoutY="181.0" prefHeight="17.0" prefWidth="112.0" text="Dane matki:" />
+            <Label layoutX="258.0" layoutY="181.0" prefHeight="17.0" prefWidth="112.0" text="Dane ojca:" />
+            <ComboBox fx:id="combo_file" layoutX="173.0" layoutY="332.0" prefHeight="25.0" prefWidth="169.0" promptText="Wybierz format pliku" />
+            <Button fx:id="button_generate" layoutX="356.0" layoutY="332.0" mnemonicParsing="false" onAction="#generate" prefHeight="25.0" prefWidth="106.0" text="Generuj" />
+            <Button fx:id="button_back" layoutX="27.0" layoutY="356.0" mnemonicParsing="false" onAction="#back" text="Powrót" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
