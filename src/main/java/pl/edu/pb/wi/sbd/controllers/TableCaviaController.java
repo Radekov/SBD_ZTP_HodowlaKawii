@@ -7,7 +7,9 @@ import javafx.beans.value.ObservableDoubleValue;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeTableColumn;
@@ -54,6 +56,15 @@ public class TableCaviaController extends AbstractController{
 
     @FXML // fx:id="column_dad"
     private TableColumn<Kawia, String> column_dad; // Value injected by FXMLLoader
+
+    @FXML // fx:id="button_remove_cavia"
+    private Button button_remove_cavia; // Value injected by FXMLLoader
+
+    @FXML // fx:id="button_add_cavia"
+    private Button button_add_cavia; // Value injected by FXMLLoader
+
+    @FXML // fx:id="button_add_cavia"
+    private Button button_back; // Value injected by FXMLLoader
 
     private ObservableList<Kawia> data;
 
@@ -110,5 +121,20 @@ public class TableCaviaController extends AbstractController{
                 return new SimpleDoubleProperty(param.getValue().getLastWaga()).asObject();
             }
         });
+    }
+
+    @FXML
+    void actionAddNewCavia(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actionDeleteSelectedCavia(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actionBack(ActionEvent event) {
+
     }
 }
