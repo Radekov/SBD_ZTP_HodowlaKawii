@@ -111,7 +111,8 @@ public class LoginController implements Initializable {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/faxml/userController.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = SbdSwinieApplication.getWindow();
+//            Stage stage = SbdSwinieApplication.getWindow();
+            Stage stage = new Stage();
             stage.setScene(new Scene(root1,1280,900));
             stage.setResizable(true);
             stage.centerOnScreen();

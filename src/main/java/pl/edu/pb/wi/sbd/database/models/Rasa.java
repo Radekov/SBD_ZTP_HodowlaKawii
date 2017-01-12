@@ -33,9 +33,6 @@ public class Rasa implements Serializable {
     @Column(name = "masc")
     private String masc;
 
-    @ManyToMany(mappedBy = "rasaCollection")
-    private Collection<Hodowla> hodowlaCollection;
-
     @OneToMany(mappedBy = "idRasa")
     private Collection<Kawia> kawiaCollection;
 
@@ -68,15 +65,6 @@ public class Rasa implements Serializable {
 
     public void setMasc(String masc) {
         this.masc = masc;
-    }
-
-    @XmlTransient
-    public Collection<Hodowla> getHodowlaCollection() {
-        return hodowlaCollection;
-    }
-
-    public void setHodowlaCollection(Collection<Hodowla> hodowlaCollection) {
-        this.hodowlaCollection = hodowlaCollection;
     }
 
     @XmlTransient

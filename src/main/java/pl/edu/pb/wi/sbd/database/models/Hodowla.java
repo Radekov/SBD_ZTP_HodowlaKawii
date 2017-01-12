@@ -32,19 +32,13 @@ public class Hodowla extends Login implements Serializable{
     @Column(name = "nazwa_hodowla")
     private String nazwaHodowla;
 
-    @JoinTable(name = "HODOWLA_KAWIA", joinColumns = {
-            @JoinColumn(name = "id_hodowla", referencedColumnName = "id_hodowla")}, inverseJoinColumns = {
-            @JoinColumn(name = "id_kawia", referencedColumnName = "id_kawia")})
-    @ManyToMany
+//    @JoinTable(name = "HODOWLA_KAWIA", joinColumns = {
+//            @JoinColumn(name = "id_hodowla", referencedColumnName = "id_hodowla")}, inverseJoinColumns = {
+//            @JoinColumn(name = "id_kawia", referencedColumnName = "id_kawia")})
+    @OneToMany(mappedBy = "idHodowla")
     private Collection<Kawia> kawiaCollection;
 
-    @JoinTable(name = "HODOWLA_RASA", joinColumns = {
-            @JoinColumn(name = "id_hodowla", referencedColumnName = "id_hodowla")}, inverseJoinColumns = {
-            @JoinColumn(name = "id_rasa", referencedColumnName = "id_rasa")})
-    @ManyToMany
-    private Collection<Rasa> rasaCollection;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hodowla", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hodowla", fetch = FetchType.LAZY)
     private Collection<HodowlaStatus> hodowlaStatusCollection;
 
     @OneToMany(mappedBy = "idHodowla")
@@ -95,15 +89,6 @@ public class Hodowla extends Login implements Serializable{
 
     public void setKawiaCollection(Collection<Kawia> kawiaCollection) {
         this.kawiaCollection = kawiaCollection;
-    }
-
-    @XmlTransient
-    public Collection<Rasa> getRasaCollection() {
-        return rasaCollection;
-    }
-
-    public void setRasaCollection(Collection<Rasa> rasaCollection) {
-        this.rasaCollection = rasaCollection;
     }
 
     public Collection<HodowlaStatus> getHodowlaStatusCollection() {

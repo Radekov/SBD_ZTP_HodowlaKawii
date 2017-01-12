@@ -30,14 +30,19 @@ public class Kawia implements Serializable {
     @Column(name = "imie")
     private String imie;
 
+    @Column(name = "przydomek")
+    private String przydomek;
+
     @Column(name = "nr_indywidualny")
     private String nrIndywidualny;
 
+    //false - 0,1 female, true - 1,0 male
     @Column(name = "plec")
     private Boolean plec;
 
-    @ManyToMany(mappedBy = "kawiaCollection")
-    private Collection<Hodowla> hodowlaCollection;
+    @JoinColumn(name = "id_hodowla", referencedColumnName = "id_hodowla")
+    @ManyToOne
+    private Hodowla idHodowla;
 
     //Rodzic
     @OneToMany(mappedBy = "kawia")
@@ -83,6 +88,14 @@ public class Kawia implements Serializable {
         return w.getWaga();
     }
 
+    public String getPrzydomek() {
+        return przydomek;
+    }
+
+    public void setPrzydomek(String przydomek) {
+        this.przydomek = przydomek;
+    }
+
     public Integer getIdKawia() {
         return idKawia;
     }
@@ -115,13 +128,13 @@ public class Kawia implements Serializable {
         this.plec = plec;
     }
 
-    @XmlTransient
-    public Collection<Hodowla> getHodowlaCollection() {
-        return hodowlaCollection;
+
+    public Hodowla getIdHodowla() {
+        return idHodowla;
     }
 
-    public void setHodowlaCollection(Collection<Hodowla> hodowlaCollection) {
-        this.hodowlaCollection = hodowlaCollection;
+    public void setIdHodowla(Hodowla idHodowla) {
+        this.idHodowla = idHodowla;
     }
 
     @XmlTransient

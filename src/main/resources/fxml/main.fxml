@@ -4,7 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.MainController">
    <children>
        <Pane>
            <children>
@@ -15,7 +15,7 @@
       <Label fx:id="label_name_user" layoutX="95.0" layoutY="153.0" text="Pełna nazwa użytkownika" />
       <Label fx:id="label_status" layoutX="305.0" layoutY="153.0" text="Status" />
       <Button fx:id="button_logout" layoutX="572.0" layoutY="149.0" mnemonicParsing="false" onAction="#logoutActionClick" text="Wyloguj" />
-      <Button layoutX="32.0" layoutY="200.0" mnemonicParsing="false" text="Spis Kawii" />
+      <Button fx:id="button_list_cavies" layoutX="32.0" layoutY="200.0" mnemonicParsing="false" onAction="#actionOpenListCavies" text="Spis Kawii" />
       <Button layoutX="129.0" layoutY="200.0" mnemonicParsing="false" text="Ogłoszenia" />
       <Button layoutX="267.0" layoutY="200.0" mnemonicParsing="false" text="Terminarz" />
       <Button layoutX="398.0" layoutY="200.0" mnemonicParsing="false" text="Kontakt" />

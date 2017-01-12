@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import pl.edu.pb.wi.sbd.database.models.*;
-import pl.edu.pb.wi.sbd.database.repository.HodowlaRepository;
-import pl.edu.pb.wi.sbd.database.repository.HodowlaStatusRepository;
-import pl.edu.pb.wi.sbd.database.repository.KlubRepository;
-import pl.edu.pb.wi.sbd.database.repository.LoginRepository;
+import pl.edu.pb.wi.sbd.database.repository.*;
 import pl.edu.pb.wi.sbd.security.HashPassword;
 
 import java.util.Date;
@@ -35,7 +32,10 @@ public class SbdSwinieApplication extends AbstractJavaFxApplicationSupport {
         stage.setScene(scene);
         stage.show();
         window = stage;
+        setFirstValues();
 
+        KawiaRepository kawiaRepository = Context.getInstance().getBean(KawiaRepository.class);
+        kawiaRepository.findByPlec(true);
     }
 
     public static void main(String[] args) {
@@ -64,9 +64,5 @@ public class SbdSwinieApplication extends AbstractJavaFxApplicationSupport {
         hs.setStatus("AKTYWNY");
         hs.setHodowla(h);
         hs = hodowlaStatusRepository.save(hs);
-    }
-
-    public static Stage getWindow() {
-        return window;
     }
 }
