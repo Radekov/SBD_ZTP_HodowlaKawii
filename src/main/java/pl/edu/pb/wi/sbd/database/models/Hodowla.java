@@ -35,7 +35,7 @@ public class Hodowla extends Login implements Serializable{
 //    @JoinTable(name = "HODOWLA_KAWIA", joinColumns = {
 //            @JoinColumn(name = "id_hodowla", referencedColumnName = "id_hodowla")}, inverseJoinColumns = {
 //            @JoinColumn(name = "id_kawia", referencedColumnName = "id_kawia")})
-    @OneToMany(mappedBy = "idHodowla")
+    @OneToMany(mappedBy = "idHodowla", fetch = FetchType.EAGER)
     private Collection<Kawia> kawiaCollection;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hodowla", fetch = FetchType.LAZY)

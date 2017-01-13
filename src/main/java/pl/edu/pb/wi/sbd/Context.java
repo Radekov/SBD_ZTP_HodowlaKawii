@@ -28,6 +28,6 @@ public class Context {
     }
 
     public void setLogged(Login logged) {
-        logged = logged;
+        this.logged = logged;
     }
 }

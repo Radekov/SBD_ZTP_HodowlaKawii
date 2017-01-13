@@ -40,9 +40,7 @@ public class LoginController2 extends AbstractController {
     @FXML // fx:id="button_login"
     private Button button_login;
 
-    //Przeniesiono do AbstractController
-//    @FXML
-//    private BannerController bannerController;
+    private Login result;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -77,22 +75,19 @@ public class LoginController2 extends AbstractController {
                 statement_password.setVisible(true);
                 break;
             case GOOD_LOGIN:
-                try {
-                    Parent home_page_parent = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
-                    Scene home_page_scene = new Scene(home_page_parent);
-                    Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    app_stage.hide(); //optional
-                    app_stage.setScene(home_page_scene);
-                    app_stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                CONTEXT.setLogged(result);
+                openScene(event,"/fxml/main.fxml");
         }
     }
 
     private void hideStatements() {
         statement_login.setVisible(false);
         statement_password.setVisible(false);
+    }
+
+    @Override
+    protected void initData(FXMLLoader fxmlLoader) {
+
     }
 
     private enum Validate {
@@ -102,7 +97,7 @@ public class LoginController2 extends AbstractController {
     private Validate validateUser(String login, String password) {
         Validate validate = Validate.GOOD_LOGIN;
         LoginRepository loginRepository = CONTEXT.getInstance().getBean(LoginRepository.class);
-        Login result = loginRepository.findByNazwa(login);
+        result = loginRepository.findByNazwa(login);
         if (result == null) {
             System.out.println("Nick: " + login + " not exists.");
             validate = Validate.BAD_LOGIN;
@@ -117,4 +112,6 @@ public class LoginController2 extends AbstractController {
         CONTEXT.setLogged(result);
         return validate;
     }
+
+
 }

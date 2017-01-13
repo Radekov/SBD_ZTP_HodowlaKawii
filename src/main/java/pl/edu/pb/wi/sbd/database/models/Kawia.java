@@ -78,16 +78,6 @@ public class Kawia implements Serializable {
         this.idKawia = idKawia;
     }
 
-    public Double getLastWaga(){
-        Waga w = Collections.max(getWagaCollection(), new Comparator<Waga>() {
-            @Override
-            public int compare(Waga o1, Waga o2) {
-                return o1.getWagaPK().getDataWazenia().compareTo(o2.getWagaPK().getDataWazenia());
-            }
-        });
-        return w.getWaga();
-    }
-
     public String getPrzydomek() {
         return przydomek;
     }

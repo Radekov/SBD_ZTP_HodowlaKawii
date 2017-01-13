@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import org.springframework.context.ConfigurableApplicationContext;
 import pl.edu.pb.wi.sbd.Context;
@@ -20,6 +21,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -101,6 +103,8 @@ public class AddNewCaviaController implements Initializable{
     private Kawia newKawia = new Kawia();
     private Miot newMiot = new Miot();
 
+    TableView<Kawia> originalTableCavies;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         KawiaRepository kawiaRepository = CONTEXT.getInstance().getBean(KawiaRepository.class);
@@ -114,6 +118,7 @@ public class AddNewCaviaController implements Initializable{
         combo_father.setConverter(converter);
         combo_mother.setConverter(converter);
 
+        newKawia.setPlec(true);
         selected_sex.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
@@ -127,12 +132,14 @@ public class AddNewCaviaController implements Initializable{
         date_picker_born.setValue(LocalDate.now());
     }
 
+    void initData(TableView<Kawia> table){
+        originalTableCavies = table;
+    }
+
     @FXML
     void actionAddNewCavia(ActionEvent event) {
         newKawia.setImie(text_name.getText());
         newKawia.setPrzydomek(text_przydomek.getText());
-
-
 
         String race = text_race.getText();
         String colour = text_colour.getText();
@@ -159,16 +166,24 @@ public class AddNewCaviaController implements Initializable{
 
         //TODO zamknąć okno
         //return newKawia;
+        originalTableCavies.getItems().add(newKawia);
+        ((Stage)button_add_new_cavia.getScene().getWindow()).close();
     }
 
     @FXML
     void actionCancelAddNewCavia(ActionEvent event) {
+        fathersObservableList = null;
+        mothersObservableList = null;
+        newMiot = null;
+        newKawia = null;
+        ((Stage)button_add_new_cavia.getScene().getWindow()).close();
     }
 
     @FXML
     void actionSetDate(ActionEvent event){
         Date date = Date.from(date_picker_born.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         newMiot.setDataUrodzenia(date);
+
     }
 
     @FXML

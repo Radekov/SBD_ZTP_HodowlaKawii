@@ -2,6 +2,7 @@ package pl.edu.pb.wi.sbd.controllers;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableDoubleValue;
 import javafx.beans.value.ObservableValue;
@@ -9,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,9 +19,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import pl.edu.pb.wi.sbd.controllers.models.OwnerCavies;
 import pl.edu.pb.wi.sbd.database.models.Kawia;
+import pl.edu.pb.wi.sbd.database.models.Miot;
+import pl.edu.pb.wi.sbd.database.repository.WagaRepository;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created by Radosław Naruszewicz on 2017-01-09.
@@ -31,6 +35,9 @@ public class TableCaviaController extends AbstractController{
 
     @FXML // fx:id="column_colour"
     private TableColumn<Kawia, String> column_colour; // Value injected by FXMLLoader
+
+    @FXML // fx:id="column_age"
+    private TableColumn<Kawia, Integer> column_age; // Value injected by FXMLLoader
 
     @FXML // fx:id="column_mom"
     private TableColumn<Kawia, String> column_mom; // Value injected by FXMLLoader
@@ -52,7 +59,7 @@ public class TableCaviaController extends AbstractController{
 
     @FXML // fx:id="column_sex"
     //TODO zmienić na String
-    private TableColumn<Kawia, Boolean> column_sex; // Value injected by FXMLLoader
+    private TableColumn<Kawia, String> column_sex; // Value injected by FXMLLoader
 
     @FXML // fx:id="column_dad"
     private TableColumn<Kawia, String> column_dad; // Value injected by FXMLLoader
@@ -66,26 +73,54 @@ public class TableCaviaController extends AbstractController{
     @FXML // fx:id="button_add_cavia"
     private Button button_back; // Value injected by FXMLLoader
 
+//    List<Kawia> caviesList;
     private ObservableList<Kawia> data;
+
+    WagaRepository wagaRepository = CONTEXT.getInstance().getBean(WagaRepository.class);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        OwnerCavies cavies = CONTEXT.getLogged();
+//        caviesList = new ArrayList<>();
         data = FXCollections.observableArrayList();
-        data.addAll(cavies.getAllCavies());
+        OwnerCavies cavies = CONTEXT.getLogged();
+
+//        caviesList = cavies.getAllCavies();
         initializeColumns();
+        data.addAll(cavies.getAllCavies());//RYZYKO dla hodowli/miłośnika która nie ma żadnych, że nie zadziała
         table_cavia.setItems(data);
     }
 
     private void initializeColumns(){
         column_lp.setCellValueFactory(new PropertyValueFactory<Kawia, Integer>("idKawia"));
         column_name.setCellValueFactory(new PropertyValueFactory<Kawia, String>("imie"));
-        column_sex.setCellValueFactory(new PropertyValueFactory<Kawia, Boolean>("plec"));
+//        column_sex.setCellValueFactory(new PropertyValueFactory<Kawia, Boolean>("plec"));
+        column_sex.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Kawia,String>, ObservableValue<String>>(){
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Kawia, String> param) {
+                String result = "1,0";
+                Boolean plec = param.getValue().getPlec();
+                if(plec == null) return new SimpleStringProperty("---");
+                return plec?new SimpleStringProperty("1,0"):new SimpleStringProperty("0,1");
+            }
+        });
+        column_age.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Kawia,Integer>, ObservableValue<Integer>>(){
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Kawia, Integer> param) {
+                Date bornDate = param.getValue().getIdMiot().getDataUrodzenia();
+                if(bornDate==null) return null;
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(bornDate);
+                Integer bornYear = cal.get(Calendar.YEAR);
+                cal.setTime(new Date());
+                Integer age = cal.get(Calendar.YEAR) - bornYear;
+                return new SimpleIntegerProperty(age).asObject();
+            }
+        });
         //Kawia->Miot->Hodowla->Nazwa
         column_hodowla.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Kawia,String>, ObservableValue<String>>(){
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Kawia, String> param) {
-                return new SimpleStringProperty(param.getValue().getIdMiot().getIdHodowla().getNazwaHodowla());
+                return new SimpleStringProperty(param.getValue().getPrzydomek());
             }
         });
         //Todo naprawić Miot rodzice
@@ -93,7 +128,9 @@ public class TableCaviaController extends AbstractController{
         column_mom.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Kawia,String>, ObservableValue<String>>(){
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Kawia, String> param) {
-                return new SimpleStringProperty(param.getValue().getIdMiot().getKawia().getImie());//FIX
+                Miot miot = param.getValue().getIdMiot();
+                String value = miot.getKawia() != null ? miot.getKawia().getImie() : "---";
+                return new SimpleStringProperty(value);//FIX
             }
         });
 //        //Kawia->Miot->Kawia_Tata->Imie
@@ -118,14 +155,16 @@ public class TableCaviaController extends AbstractController{
         column_weight.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Kawia,Double>, ObservableValue<Double>>(){
             @Override
             public ObservableValue<Double> call(TableColumn.CellDataFeatures<Kawia, Double> param) {
-                return new SimpleDoubleProperty(param.getValue().getLastWaga()).asObject();
+                Double weight = wagaRepository.findByLastWaga(param.getValue().getIdKawia());
+                if (weight == null) weight = 0.0;
+                return new SimpleDoubleProperty(weight).asObject();
             }
         });
     }
 
     @FXML
     void actionAddNewCavia(ActionEvent event) {
-
+        openWindow("/fxml/add_new_cavia.fxml");
     }
 
     @FXML
@@ -136,5 +175,11 @@ public class TableCaviaController extends AbstractController{
     @FXML
     void actionBack(ActionEvent event) {
 
+    }
+
+    @Override
+    protected void initData(FXMLLoader fxmlLoader) {
+        AddNewCaviaController controller = fxmlLoader.<AddNewCaviaController>getController();
+        controller.initData(table_cavia);
     }
 }
