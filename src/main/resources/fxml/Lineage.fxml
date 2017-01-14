@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="521.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="pl.edu.pb.wi.sbd.controllers.LineageController">
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.LineageController">
    <children>
       <Pane layoutX="4.0" layoutY="3.0" prefHeight="395.0" prefWidth="515.0">
          <children>
             <VBox layoutX="107.0" layoutY="20.0" prefHeight="153.0" prefWidth="302.0">
                <children>
-                  <ComboBox fx:id="combo_kawii" prefWidth="150.0" promptText="Wybierz kawię" />
+                  <ComboBox fx:id="combo_kawii" onAction="#updateAll" prefWidth="150.0" promptText="Wybierz kawię" />
                   <GridPane prefHeight="149.0" prefWidth="302.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
@@ -53,7 +54,6 @@
                         <Label fx:id="label_kawia_przydomek1" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="160.0" />
                         <Label fx:id="label_kawia_race1" layoutX="10.0" layoutY="102.0" prefHeight="17.0" prefWidth="168.0" />
                         <Label fx:id="label_kawia_colour1" layoutX="10.0" layoutY="127.0" prefHeight="17.0" prefWidth="168.0" />
-                        <Label fx:id="label_kawia_birthday1" prefHeight="17.0" prefWidth="160.0" />
                      </children>
                   </VBox>
                   <VBox prefHeight="164.0" prefWidth="148.0">
@@ -62,7 +62,6 @@
                         <Label layoutX="10.0" layoutY="10.0" text="Przydomek" />
                         <Label layoutX="10.0" layoutY="78.0" text="Rasa" />
                         <Label layoutX="10.0" layoutY="95.0" text="Umaszczenie" />
-                        <Label text="Data urodzenia" />
                      </children>
                   </VBox>
                </children>
@@ -82,7 +81,6 @@
                         <Label fx:id="label_kawia_przydomek11" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="160.0" />
                         <Label fx:id="label_kawia_race11" layoutX="10.0" layoutY="102.0" prefHeight="17.0" prefWidth="168.0" />
                         <Label fx:id="label_kawia_colour11" layoutX="10.0" layoutY="127.0" prefHeight="17.0" prefWidth="168.0" />
-                        <Label fx:id="label_kawia_birthday11" prefHeight="17.0" prefWidth="160.0" />
                      </children>
                   </VBox>
                   <VBox prefHeight="164.0" prefWidth="148.0">
@@ -91,7 +89,6 @@
                         <Label layoutX="10.0" layoutY="10.0" text="Przydomek" />
                         <Label layoutX="10.0" layoutY="78.0" text="Rasa" />
                         <Label layoutX="10.0" layoutY="95.0" text="Umaszczenie" />
-                        <Label text="Data urodzenia" />
                      </children>
                   </VBox>
                </children>

@@ -48,6 +48,10 @@ public class MainController extends AbstractController {
     void actionOpenAddLitter(ActionEvent event) {
         openWindow("/fxml/litter.fxml");
     }
+    @FXML
+    void actionOpenLineage(ActionEvent event) {
+        openWindow("/fxml/Lineage.fxml");
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

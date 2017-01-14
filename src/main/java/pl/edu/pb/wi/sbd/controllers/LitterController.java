@@ -163,6 +163,8 @@ public class LitterController implements Initializable {
         button_remove.setOnAction(e -> {
             Kawia kawia = tableLitter.getSelectionModel().getSelectedItem();
             if (kawia == null) return;
+            if(tableLitter.getItems().size() == 1 ) return;
+            tableLitter.getItems().remove(kawia);
             kawia.setIdHodowla(null);
         });
         button_back.setOnAction(e -> close());
