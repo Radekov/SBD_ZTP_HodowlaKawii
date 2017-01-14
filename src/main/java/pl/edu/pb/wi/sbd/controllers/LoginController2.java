@@ -69,7 +69,7 @@ public class LoginController2 extends AbstractController {
                 statement_password.setVisible(true);
                 break;
             case GOOD_LOGIN:
-                CONTEXT.setLogged(result);
+
                 openScene(event,"/fxml/main.fxml");
         }
     }

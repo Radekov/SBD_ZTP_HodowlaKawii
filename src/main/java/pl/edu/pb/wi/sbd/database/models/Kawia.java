@@ -18,7 +18,7 @@ import java.util.Collection;
 @Entity
 @Table(name = "KAWIA")
 @XmlRootElement
-public class Kawia implements Serializable {
+public class Kawia implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -212,5 +212,17 @@ public class Kawia implements Serializable {
     public String toString() {
         return "models.Kawia[ idKawia=" + idKawia + " ]";
     }
-    
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Kawia result = new Kawia();
+        result.setIdMiot(getIdMiot());
+        result.setIdHodowla(getIdHodowla());
+        result.setImie(getImie());
+        result.setPlec(getPlec());
+        result.setIdRasa(new Rasa());
+        result.getIdRasa().setMasc(getIdRasa().getMasc());
+        result.getIdRasa().setRasa(getIdRasa().getRasa());
+        return result;
+    }
 }

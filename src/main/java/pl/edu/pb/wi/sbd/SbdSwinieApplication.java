@@ -72,3 +72,26 @@ public class SbdSwinieApplication extends AbstractJavaFxApplicationSupport {
         hs = hodowlaStatusRepository.save(hs);
     }
 }
+//Albinos Białe Czarne Czerwone Czekoladowe Sepia Beżowe Szafran Kremowe Buff Lila Złote Slate blue Tricolor (tri) Roan Brindle Dalmatian Himalaya Agouti Solid
+//Argente Tortoiseshell Tortoiseshell z białym Tan Fox Lux Dutch Satin Siml
+
+//American Abyssinian Crested
+//White Crested
+/*Teddy
+Rex
+Ridgeback
+Crested Ridgeback
+Curly
+KHP
+Skinny
+Baldwin
+Peruwianka
+Boucle
+Sheltie
+Texel
+Coronet
+Merino
+Angora
+Moher
+Lunkarya
+* */

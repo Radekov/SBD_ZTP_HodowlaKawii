@@ -12,13 +12,36 @@ import java.io.Serializable;
 import java.util.Collection;
 
 /**
- *
  * @author R
  */
 @Entity
 @Table(name = "RASA")
 @XmlRootElement
 public class Rasa implements Serializable {
+
+    // Roan Brindle Dalmatian Himalaya Agouti Solid
+//Argente Tortoiseshell Tortoiseshell z białym Tan Fox Lux Dutch Satin Siml
+    public enum Colour {
+        Albinos("Albinos"), White("Białe"), Black("Czarne"), Red("Cerwone"), Chocolate("Czekoladowe"), Sepia("Sepia"),
+        Beige("Beżowy"), Saffron("Szafran"), Creme("Kremowe"), Buff("Buff"), Lily("Lila"), Gold("Złoty"),
+        SlateBlue("Slate Blue"), Tricolor("Tricolor"), Roan("Roan"), Bridnle("Bridnle"), Dalmatian("Dalmatian"),
+        Himalaya("Himalaya"), Agouti("Agouti"), Solid("Solid"), Argente("Argente"), Tortoiseshell("Tortoiseshell"),
+        TortoiseshellWhite("Tortoiseshell z białym"), Tan("Tan"), Fox("Fox"), Lux("Lux"), Dutch("Dutch"), Satin("Satin"),
+        Siml("Siml");
+
+        private final String colour;
+
+        Colour(String colour) {
+            this.colour = colour;
+        }
+
+        @Override
+        public String toString() {
+            return colour;
+        }
+    }
+
+    ;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -100,5 +123,5 @@ public class Rasa implements Serializable {
     public String toString() {
         return "models.Rasa[ idRasa=" + idRasa + " ]";
     }
-    
+
 }

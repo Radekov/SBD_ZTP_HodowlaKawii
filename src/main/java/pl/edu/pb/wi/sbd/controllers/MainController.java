@@ -46,7 +46,7 @@ public class MainController extends AbstractController {
 
     @FXML
     void actionOpenAddLitter(ActionEvent event) {
-        openScene(event,"/fxml/litter.fxml");
+        openWindow("/fxml/litter.fxml");
     }
 
     @Override

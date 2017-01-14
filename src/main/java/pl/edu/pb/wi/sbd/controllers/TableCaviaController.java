@@ -13,11 +13,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
 import pl.edu.pb.wi.sbd.controllers.models.OwnerCavies;
+import pl.edu.pb.wi.sbd.controllers.models.TableViewColumns;
 import pl.edu.pb.wi.sbd.database.models.Kawia;
 import pl.edu.pb.wi.sbd.database.models.Miot;
 import pl.edu.pb.wi.sbd.database.repository.KawiaRepository;
@@ -63,7 +63,6 @@ public class TableCaviaController extends AbstractController {
     private TableColumn<Kawia, Integer> column_lp; // Value injected by FXMLLoader
 
     @FXML // fx:id="column_sex"
-    //TODO zmienić na String
     private TableColumn<Kawia, String> column_sex; // Value injected by FXMLLoader
 
     @FXML // fx:id="column_dad"
@@ -88,7 +87,6 @@ public class TableCaviaController extends AbstractController {
         data = FXCollections.observableArrayList();
         OwnerCavies cavies = CONTEXT.getLogged();
         data.addAll(cavies.getAllCavies());//RYZYKO dla hodowli/miłośnika która nie ma żadnych, że nie zadziała
-//        caviesList = cavies.getAllCavies();
         initializeColumns();
         table_cavia.setItems(data);
         table_cavia.setEditable(true);
@@ -97,7 +95,7 @@ public class TableCaviaController extends AbstractController {
     private void initializeColumns() {
         initializeColumnLp();
         initializeColumnName();
-        initializeColumnSex();
+        TableViewColumns.initializeColumnSex(column_sex);
         initializeColumnAge();
         initializeColumnHodowla();
         //Todo naprawić Miot rodzice
@@ -137,32 +135,6 @@ public class TableCaviaController extends AbstractController {
         column_name.setCellFactory(TextFieldTableCell.<Kawia>forTableColumn());
     }
 
-    private void initializeColumnSex() {
-        column_sex.setCellValueFactory(param -> {
-                    String result = "1,0";
-                    Boolean plec = param.getValue().getPlec();
-                    if (plec == null) return new SimpleStringProperty("---");
-                    return plec ? new SimpleStringProperty("1,0") : new SimpleStringProperty("0,1");
-                }
-        );
-        column_sex.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(
-                new String("1,0"),
-                new String("0,1")
-        )));
-        column_sex.setOnEditCommit(
-                new EventHandler<TableColumn.CellEditEvent<Kawia, String>>() {
-                    @Override
-                    public void handle(TableColumn.CellEditEvent<Kawia, String> t) {
-                        String newValue = t.getNewValue();
-                        Boolean sex = true;
-                        if (t.getNewValue().equals("1,0")) sex = true;
-                        if (t.getNewValue().equals("0,1")) sex = false;
-                        ((Kawia) t.getTableView().getItems().get(t.getTablePosition().getRow())).setPlec(sex);
-                    }
-                }
-        );
-//        column_sex.setCellFactory(p -> new RadioButtonCell<Kawia, Boolean>());
-    }
 
     private void initializeColumnAge() {
         column_age.setCellValueFactory(param -> new SimpleObjectProperty<Date>(param.getValue().getIdMiot().getDataUrodzenia()));
@@ -177,16 +149,16 @@ public class TableCaviaController extends AbstractController {
     @FXML
     void actionDeleteSelectedCavia(ActionEvent event) {
         Kawia kawia = table_cavia.getSelectionModel().getSelectedItem();
-        if(kawia == null) return;
+        if (kawia == null) return;
         kawia.setIdHodowla(null);
         data.remove(kawia);
         KawiaRepository kawiaRepository = CONTEXT.getInstance().getBean(KawiaRepository.class);
-        kawiaRepository.updateHodowla(kawia.getIdKawia(),null);
+        kawiaRepository.updateHodowla(kawia.getIdKawia(), null);
     }
 
     @FXML
     void actionBack(ActionEvent event) {
-        openScene(event,"/fxml/main.fxml");
+        openScene(event, "/fxml/main.fxml");
     }
 
     @Override
