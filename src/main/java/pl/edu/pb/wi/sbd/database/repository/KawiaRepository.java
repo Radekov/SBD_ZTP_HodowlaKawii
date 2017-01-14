@@ -2,9 +2,12 @@ package pl.edu.pb.wi.sbd.database.repository;
 
 import javafx.collections.ObservableList;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import pl.edu.pb.wi.sbd.database.models.Hodowla;
 import pl.edu.pb.wi.sbd.database.models.Kawia;
 
 import java.util.List;
@@ -32,4 +35,9 @@ public interface KawiaRepository extends JpaRepository<Kawia,Integer> {
 
     @Query("select k from Kawia k where k.plec = :plec")
     public List<Kawia> findByPlec(@Param("plec")Boolean plec);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Kawia k SET k.idHodowla = :hodowla WHERE k.idKawia = :idKawia")
+    int updateHodowla(@Param("idKawia") Integer idKawia, @Param("hodowla") Hodowla hodowla);
 }

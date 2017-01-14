@@ -48,6 +48,11 @@ public class MainController extends AbstractController {
         openScene(event,"/fxml/cavia_list.fxml");
     }
 
+    @FXML
+    void actionOpenWeight(ActionEvent event) {
+        openWindow("/fxml/weight.fxml");
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

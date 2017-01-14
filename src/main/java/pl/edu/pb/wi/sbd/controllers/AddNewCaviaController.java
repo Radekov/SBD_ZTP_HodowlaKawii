@@ -164,7 +164,6 @@ public class AddNewCaviaController implements Initializable{
         newKawia.setIdMiot(newMiot);
         newKawia = kawiaRepository.save(newKawia);
 
-        //TODO zamknąć okno
         //return newKawia;
         originalTableCavies.getItems().add(newKawia);
         ((Stage)button_add_new_cavia.getScene().getWindow()).close();
@@ -183,7 +182,6 @@ public class AddNewCaviaController implements Initializable{
     void actionSetDate(ActionEvent event){
         Date date = Date.from(date_picker_born.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         newMiot.setDataUrodzenia(date);
-
     }
 
     @FXML

@@ -16,12 +16,13 @@
       <Label fx:id="label_status" layoutX="305.0" layoutY="153.0" text="Status" />
       <Button fx:id="button_logout" layoutX="572.0" layoutY="149.0" mnemonicParsing="false" onAction="#logoutActionClick" text="Wyloguj" />
       <Button fx:id="button_list_cavies" layoutX="32.0" layoutY="200.0" mnemonicParsing="false" onAction="#actionOpenListCavies" text="Spis Kawii" />
-      <Button layoutX="129.0" layoutY="200.0" mnemonicParsing="false" text="Ogłoszenia" />
-      <Button layoutX="267.0" layoutY="200.0" mnemonicParsing="false" text="Terminarz" />
+      <Button layoutX="218.0" layoutY="201.0" mnemonicParsing="false" text="Ogłoszenia" />
+      <Button layoutX="304.0" layoutY="201.0" mnemonicParsing="false" text="Terminarz" />
       <Button layoutX="398.0" layoutY="200.0" mnemonicParsing="false" text="Kontakt" />
       <Button layoutX="29.0" layoutY="280.0" mnemonicParsing="false" text="Spis Hodowli" />
       <Button layoutX="154.0" layoutY="280.0" mnemonicParsing="false" text="Spis Miłośników" />
       <Button layoutX="499.0" layoutY="201.0" mnemonicParsing="false" text="Rodowód" />
       <Button layoutX="29.0" layoutY="241.0" mnemonicParsing="false" text="Statystyki" />
+      <Button layoutX="116.0" layoutY="200.0" mnemonicParsing="false" onAction="#actionOpenWeight" text="Ustaw wagę" />
    </children>
 </AnchorPane>
