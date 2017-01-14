@@ -8,8 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import pl.edu.pb.wi.sbd.Context;
-import pl.edu.pb.wi.sbd.SbdSwinieApplication;
 import pl.edu.pb.wi.sbd.database.models.Login;
 
 import java.io.File;

@@ -1,10 +1,9 @@
 package pl.edu.pb.wi.sbd.controllers;
 
 import javafx.application.Platform;
-import javafx.beans.property.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableDoubleValue;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,10 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.HBox;
-import javafx.util.Callback;
 import javafx.util.StringConverter;
-import javafx.util.converter.IntegerStringConverter;
 import pl.edu.pb.wi.sbd.controllers.models.OwnerCavies;
 import pl.edu.pb.wi.sbd.database.models.Kawia;
 import pl.edu.pb.wi.sbd.database.models.Miot;
@@ -30,7 +26,9 @@ import pl.edu.pb.wi.sbd.database.repository.WagaRepository;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 /**
  * Created by Radosław Naruszewicz on 2017-01-09.

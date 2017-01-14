@@ -1,15 +1,11 @@
 package pl.edu.pb.wi.sbd.database.models;
 
-import org.hibernate.annotations.GenericGenerator;
-import pl.edu.pb.wi.sbd.controllers.models.OwnerCavies;
-
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 /**

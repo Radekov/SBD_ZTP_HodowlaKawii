@@ -6,22 +6,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.stereotype.Controller;
 import pl.edu.pb.wi.sbd.Context;
-import pl.edu.pb.wi.sbd.SbdSwinieApplication;
-import pl.edu.pb.wi.sbd.database.models.Hodowla;
 import pl.edu.pb.wi.sbd.database.models.Login;
-import pl.edu.pb.wi.sbd.database.models.Milosnik;
-import pl.edu.pb.wi.sbd.database.models.Zarzad;
 import pl.edu.pb.wi.sbd.database.repository.LoginRepository;
-import pl.edu.pb.wi.sbd.dialogs.AlertBox;
 import pl.edu.pb.wi.sbd.security.HashPassword;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 

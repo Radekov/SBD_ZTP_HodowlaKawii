@@ -1,6 +1,5 @@
 package pl.edu.pb.wi.sbd.database.repository;
 
-import javafx.collections.ObservableList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

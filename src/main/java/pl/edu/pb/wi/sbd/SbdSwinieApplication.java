@@ -7,8 +7,14 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import pl.edu.pb.wi.sbd.database.models.*;
-import pl.edu.pb.wi.sbd.database.repository.*;
+import pl.edu.pb.wi.sbd.database.models.Hodowla;
+import pl.edu.pb.wi.sbd.database.models.HodowlaStatus;
+import pl.edu.pb.wi.sbd.database.models.HodowlaStatusPK;
+import pl.edu.pb.wi.sbd.database.models.Klub;
+import pl.edu.pb.wi.sbd.database.repository.HodowlaRepository;
+import pl.edu.pb.wi.sbd.database.repository.HodowlaStatusRepository;
+import pl.edu.pb.wi.sbd.database.repository.KawiaRepository;
+import pl.edu.pb.wi.sbd.database.repository.KlubRepository;
 import pl.edu.pb.wi.sbd.security.HashPassword;
 
 import java.util.Date;

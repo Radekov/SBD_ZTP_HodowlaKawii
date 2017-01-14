@@ -10,9 +10,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import org.springframework.context.ConfigurableApplicationContext;
 import pl.edu.pb.wi.sbd.Context;
-import pl.edu.pb.wi.sbd.database.models.*;
+import pl.edu.pb.wi.sbd.database.models.Hodowla;
+import pl.edu.pb.wi.sbd.database.models.Kawia;
+import pl.edu.pb.wi.sbd.database.models.Miot;
+import pl.edu.pb.wi.sbd.database.models.Rasa;
 import pl.edu.pb.wi.sbd.database.repository.KawiaRepository;
 import pl.edu.pb.wi.sbd.database.repository.MiotRepository;
 import pl.edu.pb.wi.sbd.database.repository.RasaRepository;
@@ -21,7 +23,6 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
 /**

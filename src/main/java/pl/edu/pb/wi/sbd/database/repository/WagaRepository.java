@@ -7,8 +7,6 @@ import org.springframework.stereotype.Repository;
 import pl.edu.pb.wi.sbd.database.models.Waga;
 import pl.edu.pb.wi.sbd.database.models.WagaPK;
 
-import java.util.List;
-
 /**
  * Created by Radosław Naruszewicz on 2016-12-06.
  */@Repository
