@@ -167,7 +167,7 @@ public class AddNewCaviaController implements Initializable{
 
         //return newKawia;
         originalTableCavies.getItems().add(newKawia);
-        ((Stage)button_add_new_cavia.getScene().getWindow()).close();
+        actionCancelAddNewCavia(event);
     }
 
     @FXML

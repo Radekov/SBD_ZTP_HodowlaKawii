@@ -1,25 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.AddUserController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.AddUserController">
    <children>
-      <ComboBox fx:id="Type" layoutX="61.0" layoutY="63.0" onAction="#typeChoose" prefWidth="150.0" promptText="Typ" />
-      <TextField fx:id="Name" layoutX="293.0" layoutY="63.0" prefHeight="25.0" prefWidth="174.0" text="Nazwa" />
-      <DatePicker fx:id="Date" layoutX="293.0" layoutY="98.0" promptText="Data" />
-      <RadioButton fx:id="Active" layoutX="300.0" layoutY="159.0" mnemonicParsing="false" text="aktywny" />
-      <RadioButton fx:id="Diseable" layoutX="300.0" layoutY="183.0" mnemonicParsing="false" text="nieaktywny" />
-      <RadioButton fx:id="Suspended" layoutX="300.0" layoutY="206.0" mnemonicParsing="false" text="zawieszony" />
+      <ComboBox fx:id="type_new_user" layoutX="428.0" layoutY="178.0" onAction="#typeChoose" prefWidth="150.0" promptText="Typ" />
+      <TextField fx:id="Name" layoutX="293.0" layoutY="63.0" prefHeight="25.0" prefWidth="174.0" promptText="Nazwa" />
+      <DatePicker fx:id="DateS" layoutX="293.0" layoutY="138.0" promptText="Data założenia" />
+      <RadioButton fx:id="Active" layoutX="300.0" layoutY="199.0" mnemonicParsing="false" selected="true" text="aktywny">
+         <toggleGroup>
+            <ToggleGroup fx:id="group_status" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="Diseable" layoutX="300.0" layoutY="223.0" mnemonicParsing="false" text="nieaktywny" toggleGroup="$group_status" />
+      <RadioButton fx:id="Suspended" layoutX="300.0" layoutY="246.0" mnemonicParsing="false" text="zawieszony" toggleGroup="$group_status" />
       <Button fx:id="AddButton" layoutX="380.0" layoutY="298.0" mnemonicParsing="false" onAction="#add" text="Dodaj" />
-      <Button fx:id="CancelButton" layoutX="136.0" layoutY="298.0" mnemonicParsing="false" onAction="#cancel" text="Anuluj" />
-      <Label layoutX="300.0" layoutY="133.0" text="Status:" />
+      <Button fx:id="CancelButton" layoutX="136.0" layoutY="298.0" mnemonicParsing="false" onAction="#cancelWindow" text="Anuluj" />
+      <Label layoutX="300.0" layoutY="173.0" text="Status:" />
       <Label fx:id="ErrorsLabel" layoutX="238.0" layoutY="339.0" prefHeight="17.0" prefWidth="111.0" text="Błąd" />
       <Label layoutX="152.0" layoutY="14.0" text="Dodanie nowego użytkownika">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
+      <PasswordField fx:id="password" layoutX="291.0" layoutY="102.0" prefHeight="25.0" prefWidth="174.0" promptText="Hasło" />
+      <VBox layoutX="11.0" layoutY="52.0" prefHeight="101.0" prefWidth="251.0">
+         <children>
+            <GridPane prefHeight="85.0" prefWidth="286.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Imię nazwisko" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Adres" />
+                        <Label layoutX="10.0" layoutY="78.0" text="Ulica" />
+                        <Label layoutX="10.0" layoutY="95.0" text="Telefon" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <ComboBox fx:id="combo_person" prefWidth="150.0" promptText="Osoba" />
+                        <Label fx:id="label_adress" layoutX="10.0" layoutY="10.0" text="Adres" />
+                        <Label fx:id="label_street" layoutX="10.0" layoutY="102.0" text="Ulica" />
+                        <Label fx:id="label_phone" layoutX="10.0" layoutY="127.0" text="Telefon" />
+                     </children>
+                  </VBox>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.0" minWidth="10.0" prefWidth="126.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="132.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="291.0" minHeight="10.0" prefHeight="291.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+      </VBox>
+      <TextField fx:id="text_b" layoutX="428.0" layoutY="219.0" prefHeight="25.0" prefWidth="150.0" promptText="Nazwa hodowli" />
    </children>
 </AnchorPane>

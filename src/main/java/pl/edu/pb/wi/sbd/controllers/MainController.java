@@ -53,6 +53,15 @@ public class MainController extends AbstractController {
         openWindow("/fxml/Lineage.fxml");
     }
 
+    @FXML
+    void actionOpenAddPerson(ActionEvent event) {
+        openWindow("/fxml/addPerson.fxml");
+    }
+    @FXML
+    void actionOpenAddBreeding(ActionEvent event) {
+        openWindow("/fxml/AddUser.fxml");
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
