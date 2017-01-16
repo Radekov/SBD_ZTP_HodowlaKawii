@@ -6,7 +6,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.LoginController2">
    <children>
       <Button fx:id="button_login" layoutX="291.0" layoutY="278.0" mnemonicParsing="false" onAction="#loginActionClick" text="Zaloguj" />
-      <TextField fx:id="field_password" layoutX="338.0" layoutY="203.0" />
+      <PasswordField fx:id="field_password" layoutX="338.0" layoutY="203.0" />
       <TextField fx:id="field_login" layoutX="150.0" layoutY="203.0" />
       <Label layoutX="397.0" layoutY="228.0" text="Hasło" />
       <Label layoutX="210.0" layoutY="228.0" text="Login" />

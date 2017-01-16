@@ -45,11 +45,14 @@ public class Osoba implements Serializable {
     @Column(name = "telefon")
     private String telefon;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "osoba")
-    private Collection<OsobaHodowla> osobaHodowlaCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "osoba")
+//    private Collection<OsobaHodowla> osobaHodowlaCollection;
+
+//    @OneToOne(mappedBy = "idOsoba")
+//    private Milosnik milosnik;
 
     @OneToOne(mappedBy = "idOsoba")
-    private Milosnik milosnik;
+    private Login login;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "osoba")
     private Collection<WlascicielKawia> wlascicielKawiaCollection;
@@ -57,8 +60,8 @@ public class Osoba implements Serializable {
     @OneToMany(mappedBy = "osoba")
     private Collection<KawiaOsobaWystawa> kawiaOsobaWystawaCollection;
 
-    @OneToMany(mappedBy = "idOsoba")
-    private Collection<Zarzad> zarzadCollection;
+//    @OneToMany(mappedBy = "idOsoba")
+//    private Collection<Zarzad> zarzadCollection;
 
     public Osoba() {
     }
@@ -123,23 +126,23 @@ public class Osoba implements Serializable {
         this.telefon = telefon;
     }
 
-    @XmlTransient
-    public Collection<OsobaHodowla> getOsobaHodowlaCollection() {
-        return osobaHodowlaCollection;
-    }
+//    @XmlTransient
+//    public Collection<OsobaHodowla> getOsobaHodowlaCollection() {
+//        return osobaHodowlaCollection;
+//    }
+//
+//    public void setOsobaHodowlaCollection(Collection<OsobaHodowla> osobaHodowlaCollection) {
+//        this.osobaHodowlaCollection = osobaHodowlaCollection;
+//    }
 
-    public void setOsobaHodowlaCollection(Collection<OsobaHodowla> osobaHodowlaCollection) {
-        this.osobaHodowlaCollection = osobaHodowlaCollection;
-    }
 
-
-    public Milosnik getMilosnik() {
-        return milosnik;
-    }
-
-    public void setMilosnik(Milosnik milosnik) {
-        this.milosnik = milosnik;
-    }
+//    public Milosnik getMilosnik() {
+//        return milosnik;
+//    }
+//
+//    public void setMilosnik(Milosnik milosnik) {
+//        this.milosnik = milosnik;
+//    }
 
     @XmlTransient
     public Collection<WlascicielKawia> getWlascicielKawiaCollection() {
@@ -159,14 +162,14 @@ public class Osoba implements Serializable {
         this.kawiaOsobaWystawaCollection = kawiaOsobaWystawaCollection;
     }
 
-    @XmlTransient
-    public Collection<Zarzad> getZarzadCollection() {
-        return zarzadCollection;
-    }
-
-    public void setZarzadCollection(Collection<Zarzad> zarzadCollection) {
-        this.zarzadCollection = zarzadCollection;
-    }
+//    @XmlTransient
+//    public Collection<Zarzad> getZarzadCollection() {
+//        return zarzadCollection;
+//    }
+//
+//    public void setZarzadCollection(Collection<Zarzad> zarzadCollection) {
+//        this.zarzadCollection = zarzadCollection;
+//    }
 
     @Override
     public int hashCode() {

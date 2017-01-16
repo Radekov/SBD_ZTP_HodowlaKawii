@@ -145,6 +145,7 @@ public class LitterController implements Initializable {
         prototyp = new Kawia();
         prototyp.setIdHodowla(h);
         prototyp.setPrzydomek(h.getNazwaHodowla());
+        System.out.println(h.getNazwaHodowla());
         prototyp.setImie(firstLetter + "");
         prototyp.setPlec(false);
         prototyp.setIdRasa(new Rasa());

@@ -94,13 +94,14 @@ public class LineageController implements Initializable {
         label_kawia_colour.setText(k.getIdRasa().getMasc());
         label_kawia_sex.setText(k.getPlec()?"1,0":"0,1");
         Double weight = wagaRepository.findByLastWaga(k.getIdKawia());
-        if(weight == null) label_kawia_weight.setText(weight.toString());
+        if(weight != null) label_kawia_weight.setText(weight.toString());
         else label_kawia_weight.setText("0");
 
         Miot m = k.getIdMiot();
         if(k.getIdMiot()==null) return;
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        if(k.getIdMiot().getDataUrodzenia()!=null)
         label_kawia_birthday.setText(sdf.format(k.getIdMiot().getDataUrodzenia()));
 
         Kawia mot = m.getKawia();

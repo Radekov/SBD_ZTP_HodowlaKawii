@@ -32,7 +32,19 @@ public abstract class Login implements Serializable, OwnerCavies{
     @Column(name = "haslo")
     private String haslo;
 
-//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "login")
+    @JoinColumn(name = "id_osoba", referencedColumnName = "id_osoba")
+    @OneToOne
+    private Osoba idOsoba;
+
+    public Osoba getIdOsoba() {
+        return idOsoba;
+    }
+
+    public void setIdOsoba(Osoba idOsoba) {
+        this.idOsoba = idOsoba;
+    }
+
+    //    @OneToOne(cascade = CascadeType.ALL, mappedBy = "login")
 //    private Hodowla hodowla;
 //
 //    @OneToOne(cascade = CascadeType.ALL, mappedBy = "login")
@@ -96,4 +108,6 @@ public abstract class Login implements Serializable, OwnerCavies{
     public String toString() {
         return "models.Login[ idLogin=" + idLogin + " ]";
     }
+
+    public abstract String getStatus();
 }

@@ -21,6 +21,16 @@ public class MainController extends AbstractController {
     private Button button_list_cavies;
 
     @FXML
+    private Button admin_table_users;
+
+    @FXML
+    private Button adminAddPerson;
+
+    @FXML
+    private Button adminAddUser;
+
+
+    @FXML
     private Label label_kind;
 
     @FXML
@@ -31,7 +41,8 @@ public class MainController extends AbstractController {
 
     @FXML
     void logoutActionClick(ActionEvent event) {
-
+        CONTEXT.setLogged(null);
+        openScene(event,"/fxml/login.fxml");
     }
 
     @FXML
@@ -48,6 +59,7 @@ public class MainController extends AbstractController {
     void actionOpenAddLitter(ActionEvent event) {
         openWindow("/fxml/litter.fxml");
     }
+
     @FXML
     void actionOpenLineage(ActionEvent event) {
         openWindow("/fxml/Lineage.fxml");
@@ -57,6 +69,7 @@ public class MainController extends AbstractController {
     void actionOpenAddPerson(ActionEvent event) {
         openWindow("/fxml/addPerson.fxml");
     }
+
     @FXML
     void actionOpenAddBreeding(ActionEvent event) {
         openWindow("/fxml/AddUser.fxml");
@@ -64,7 +77,9 @@ public class MainController extends AbstractController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        admin_table_users.setOnAction(e->{
+            openWindow("/fxml/user_list.fxml");
+        });
     }
 
     @Override

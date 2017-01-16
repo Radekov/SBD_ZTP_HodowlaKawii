@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="363.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.AddNewCaviaController">
    <children>
       <Pane layoutX="14.0" layoutY="14.0" prefHeight="218.0" prefWidth="286.0">
@@ -21,7 +23,6 @@
                         <Label layoutX="10.0" layoutY="10.0" text="Przydomek" />
                         <Label layoutX="10.0" layoutY="27.0" text="Płeć" />
                         <Label layoutX="10.0" layoutY="44.0" text="Data urodzenia" />
-                        <Label layoutX="10.0" layoutY="61.0" text="Waga (g)" />
                         <Label layoutX="10.0" layoutY="78.0" text="Rasa" />
                         <Label layoutX="10.0" layoutY="95.0" text="Umaszczenie" />
                      </children>
@@ -40,7 +41,6 @@
                            </children>
                         </HBox>
                         <DatePicker fx:id="date_picker_born" onAction="#actionSetDate" promptText="Wybierz datę" />
-                        <TextField fx:id="text_weight" layoutX="10.0" layoutY="35.0" />
                         <TextField fx:id="text_race" layoutX="10.0" layoutY="102.0" />
                         <TextField fx:id="text_colour" layoutX="10.0" layoutY="127.0" />
                         <CheckBox fx:id="checkbox_owner" mnemonicParsing="false" text="Należy do hodowli" />

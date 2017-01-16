@@ -38,9 +38,9 @@ public class Zarzad extends Login implements Serializable {
     @Column(name = "status")
     private String status;
 
-    @JoinColumn(name = "id_osoba", referencedColumnName = "id_osoba")
-    @ManyToOne
-    private Osoba idOsoba;
+//    @JoinColumn(name = "id_osoba", referencedColumnName = "id_osoba")
+//    @ManyToOne
+//    private Osoba idOsoba;
 
 //    @JoinColumn(name = "id_zarzad", referencedColumnName = "id_login", insertable = false, updatable = false)
 //    @OneToOne(optional = false)
@@ -77,13 +77,13 @@ public class Zarzad extends Login implements Serializable {
         this.status = status;
     }
 
-    public Osoba getIdOsoba() {
-        return idOsoba;
-    }
-
-    public void setIdOsoba(Osoba idOsoba) {
-        this.idOsoba = idOsoba;
-    }
+//    public Osoba getIdOsoba() {
+//        return idOsoba;
+//    }
+//
+//    public void setIdOsoba(Osoba idOsoba) {
+//        this.idOsoba = idOsoba;
+//    }
 
 //    public Login getLogin() {
 //        return login;

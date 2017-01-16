@@ -220,6 +220,7 @@ public class Kawia implements Serializable, Cloneable {
         result.setIdHodowla(getIdHodowla());
         result.setImie(getImie());
         result.setPlec(getPlec());
+        result.setPrzydomek(getPrzydomek());
         result.setIdRasa(new Rasa());
         result.getIdRasa().setMasc(getIdRasa().getMasc());
         result.getIdRasa().setRasa(getIdRasa().getRasa());

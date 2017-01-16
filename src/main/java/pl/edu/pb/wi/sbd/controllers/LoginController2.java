@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.springframework.stereotype.Controller;
 import pl.edu.pb.wi.sbd.database.models.Login;
@@ -29,7 +30,7 @@ public class LoginController2 extends AbstractController {
     private TextField field_login;
 
     @FXML // fx:id="field_password"
-    private TextField field_password;
+    private PasswordField field_password;
 
     @FXML // fx:id="button_login"
     private Button button_login;

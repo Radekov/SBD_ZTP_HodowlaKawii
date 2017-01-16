@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="901.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.TableUserController">
+   <children>
+      <TableView fx:id="table_user" prefHeight="380.0" prefWidth="901.0">
+        <columns>
+          <TableColumn fx:id="column_lp" prefWidth="31.0" text="Lp" />
+            <TableColumn fx:id="column_login" prefWidth="75.0" text="Login" />
+          <TableColumn fx:id="column_kind" prefWidth="119.0" text="Rodzaj" />
+            <TableColumn fx:id="column_status" prefWidth="75.0" text="Status" />
+            <TableColumn fx:id="column_fname" prefWidth="75.0" text="Imię" />
+            <TableColumn fx:id="column_sname" prefWidth="100.0" text="Nazwisko" />
+            <TableColumn fx:id="column_phone" prefWidth="50.0" text="Telefon" />
+            <TableColumn fx:id="column_adress" prefWidth="75.0" text="Adres" />
+            <TableColumn fx:id="column_street" prefWidth="75.0" text="Ulica" />
+        </columns>
+      </TableView>
+      <Button fx:id="button_back" layoutX="700.0" layoutY="399.0" mnemonicParsing="false" onAction="#actionBack" text="Powrót" />
+      <Button fx:id="button_remove_user" layoutX="789.0" layoutY="399.0" mnemonicParsing="false" onAction="#actionDeleteUser" text="Usuń konto" />
+   </children>
+</AnchorPane>

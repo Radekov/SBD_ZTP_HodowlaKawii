@@ -23,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import pl.edu.pb.wi.sbd.Context;
+import pl.edu.pb.wi.sbd.controllers.models.TypeUser;
 import pl.edu.pb.wi.sbd.database.models.*;
 import pl.edu.pb.wi.sbd.database.repository.*;
 import pl.edu.pb.wi.sbd.security.HashPassword;
@@ -105,10 +106,9 @@ public class AddUserController implements Initializable {
     void add(ActionEvent event) {
         //
         String st="";
-        Integer aktSt = 0;
         if (group_status.getSelectedToggle() == Active) st="Aktywny";
-        else if (group_status.getSelectedToggle() == Diseable) {st="Zawieszony"; aktSt = 1;}
-        else if (group_status.getSelectedToggle() == Suspended) {st="Usunięta";aktSt = 2;}
+        else if (group_status.getSelectedToggle() == Diseable) st="Zawieszony";
+        else if (group_status.getSelectedToggle() == Suspended) st="Usunięta";
         Date date = Date.from(DateS.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         switch (type_new_user.getValue()) {
             case BREEDING:
@@ -134,13 +134,14 @@ public class AddUserController implements Initializable {
                 z.setIdOsoba(combo_person.getValue());
                 ZarzadRepository zarzadRepository = Context.getInstance().getBean(ZarzadRepository.class);
                 zarzadRepository.save(z);
+                break;
             case LOVER:
                 Milosnik m = new Milosnik();
                 m.setIdOsoba(combo_person.getValue());
                 m.setHaslo(HashPassword.get_SHA_512_SecurePassword(password.getText()));
                 m.setDataNadania(date);
                 m.setNazwa(Name.getText());
-                m.setAktywnosc(aktSt);
+                m.setStatus(st);
                 MilosnikRepository milosnikRepository = Context.getInstance().getBean(MilosnikRepository.class);
                 milosnikRepository.save(m);
         }
@@ -167,19 +168,6 @@ public class AddUserController implements Initializable {
         type_new_user.getItems().addAll(TypeUser.values());
     }
 
-    public enum TypeUser {
-        BREEDING("HODOWLA"), LOVER("MIŁOŚNIK"), CONTROL("ZARZĄD");
-        private final String type;
-
-        TypeUser(String type) {
-            this.type = type;
-        }
-
-        @Override
-        public String toString() {
-            return type;
-        }
-    }
     StringConverter<Osoba> converter = new StringConverter<Osoba>() {
         @Override
         public String toString(Osoba object) {

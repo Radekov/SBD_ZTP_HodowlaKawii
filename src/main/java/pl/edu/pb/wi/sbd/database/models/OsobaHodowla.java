@@ -14,9 +14,9 @@ import java.util.Date;
  *
  * @author R
  */
-@Entity
-@Table(name = "OSOBA_HODOWLA")
-@XmlRootElement
+//@Entity
+//@Table(name = "OSOBA_HODOWLA")
+//@XmlRootElement
 public class OsobaHodowla implements Serializable {
 
     private static final long serialVersionUID = 1L;

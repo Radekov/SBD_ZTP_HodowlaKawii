@@ -34,11 +34,11 @@ public class Milosnik extends Login implements Serializable {
     @Type(type="date")
     @Column(name = "data_nadania")
     private Date dataNadania;
-    @Column(name = "aktywnosc")
-    private Integer aktywnosc;
-    @JoinColumn(name = "id_osoba", referencedColumnName = "id_osoba")
-    @OneToOne
-    private Osoba idOsoba;
+    @Column(name = "status")
+    private String status;
+//    @JoinColumn(name = "id_osoba", referencedColumnName = "id_osoba")
+//    @OneToOne
+//    private Osoba idOsoba;
 //    @JoinColumn(name = "id_milosnik", referencedColumnName = "id_login", insertable = false, updatable = false)
 //    @OneToOne(optional = false)
 //    private Login login;
@@ -66,21 +66,21 @@ public class Milosnik extends Login implements Serializable {
         this.dataNadania = dataNadania;
     }
 
-    public Integer getAktywnosc() {
-        return aktywnosc;
+    public String getStatus() {
+        return status;
     }
 
-    public void setAktywnosc(Integer aktywnosc) {
-        this.aktywnosc = aktywnosc;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public Osoba getIdOsoba() {
-        return idOsoba;
-    }
-
-    public void setIdOsoba(Osoba idOsoba) {
-        this.idOsoba = idOsoba;
-    }
+//    public Osoba getIdOsoba() {
+//        return idOsoba;
+//    }
+//
+//    public void setIdOsoba(Osoba idOsoba) {
+//        this.idOsoba = idOsoba;
+//    }
 
 //    public Login getLogin() {
 //        return login;

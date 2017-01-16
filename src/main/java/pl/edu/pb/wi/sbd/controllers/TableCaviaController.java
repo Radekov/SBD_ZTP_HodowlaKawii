@@ -229,8 +229,9 @@ public class TableCaviaController extends AbstractController {
                     setContentDisplay(ContentDisplay.TEXT_ONLY);
 
                 } else {
+                    if(item!=null){
                     setDatepikerDate(smp.format(item));
-                    setText(smp.format(item));
+                    setText(smp.format(item));}
                     setGraphic(this.datePicker);
                     setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                 }

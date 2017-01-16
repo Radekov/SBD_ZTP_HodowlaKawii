@@ -16,15 +16,15 @@ import java.util.List;
  */@Repository
 public interface KawiaRepository extends JpaRepository<Kawia,Integer> {
      @Query("SELECT k " +
-             "FROM Kawia k, WlascicielKawia wk, Osoba o, OsobaHodowla oh "+
+             "FROM Kawia k, WlascicielKawia wk, Osoba o, Login l "+
              "WHERE k.idKawia = wk.wlascicielKawiaPK.idKawia " +
+             "AND l.idLogin = :idHodowla " +
              "AND wk.wlascicielKawiaPK.idOsoba = o.idOsoba AND wk.dataZwrotu IS NULL " +
-             "AND o.idOsoba = oh.osobaHodowlaPK.idOsoba " +
-             "AND oh.osobaHodowlaPK.idHodowla = :idHodowla")
+             "AND o.idOsoba = l.idOsoba ")
     public List<Kawia> findByWlasiciel(@Param("idHodowla") Integer idHodowla);
 
     @Query("SELECT k " +
-            "FROM Kawia k, WlascicielKawia wk, Osoba o, Milosnik m "+
+            "FROM Kawia k, WlascicielKawia wk, Osoba o "+
             "WHERE :idMilosnik = o.idOsoba " +
             "AND o.idOsoba = wk.wlascicielKawiaPK.idOsoba " +
             "AND wk.dataZwrotu IS NULL " +

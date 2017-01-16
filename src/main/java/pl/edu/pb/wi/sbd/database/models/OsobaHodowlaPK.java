@@ -17,7 +17,7 @@ import java.util.Date;
  *
  * @author R
  */
-@Embeddable
+//@Embeddable
 public class OsobaHodowlaPK implements Serializable {
 
     @Basic(optional = false)

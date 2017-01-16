@@ -1,5 +1,8 @@
 package pl.edu.pb.wi.sbd.database.models;
 
+import pl.edu.pb.wi.sbd.Context;
+import pl.edu.pb.wi.sbd.database.repository.HodowlaStatusRepository;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -48,8 +51,8 @@ public class Hodowla extends Login implements Serializable{
 //    @OneToOne(fetch = FetchType.EAGER, optional = false)
 //    private Login login;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hodowla")
-    private Collection<OsobaHodowla> osobaHodowlaCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hodowla")
+//    private Collection<OsobaHodowla> osobaHodowlaCollection;
 
     public Hodowla() {
     }
@@ -120,14 +123,14 @@ public class Hodowla extends Login implements Serializable{
 //        this.login = login;
 //    }
 
-    @XmlTransient
-    public Collection<OsobaHodowla> getOsobaHodowlaCollection() {
-        return osobaHodowlaCollection;
-    }
-
-    public void setOsobaHodowlaCollection(Collection<OsobaHodowla> osobaHodowlaCollection) {
-        this.osobaHodowlaCollection = osobaHodowlaCollection;
-    }
+//    @XmlTransient
+//    public Collection<OsobaHodowla> getOsobaHodowlaCollection() {
+//        return osobaHodowlaCollection;
+//    }
+//
+//    public void setOsobaHodowlaCollection(Collection<OsobaHodowla> osobaHodowlaCollection) {
+//        this.osobaHodowlaCollection = osobaHodowlaCollection;
+//    }
 
     @Override
     public int hashCode() {
@@ -161,7 +164,16 @@ public class Hodowla extends Login implements Serializable{
         return new ArrayList<Kawia>(getKawiaCollection());
     }
 
-//    @Override
+    @Override
+    public String getStatus() {
+        HodowlaStatusRepository hodowlaStatusRepository = Context.getInstance().getBean(HodowlaStatusRepository.class);
+        if(getIdLogin() == null) return null;
+        String result = hodowlaStatusRepository.findByDate(getIdLogin());
+        if(result == null) result = "";
+        return result;
+    }
+
+    //    @Override
 //    public String write() {
 //        //Leniwe podejście FIXME
 //        HodowlaStatus status = null;
@@ -178,4 +190,5 @@ public class Hodowla extends Login implements Serializable{
 //        }
 //        return ("Hodowla: " + nazwaHodowla + " Status: " + status.getStatus());
 //    }
+
 }

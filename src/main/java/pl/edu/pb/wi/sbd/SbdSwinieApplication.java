@@ -76,7 +76,7 @@ public class SbdSwinieApplication extends AbstractJavaFxApplicationSupport {
 //Argente Tortoiseshell Tortoiseshell z białym Tan Fox Lux Dutch Satin Siml
 
 //American Abyssinian Crested
-//White Crested
+//White Crestedz
 /*Teddy
 Rex
 Ridgeback
