@@ -38,10 +38,10 @@ public class SbdSwinieApplication extends AbstractJavaFxApplicationSupport {
         stage.setScene(scene);
         stage.show();
         window = stage;
-//        setFirstValues();
+        setFirstValues();
 
-        KawiaRepository kawiaRepository = Context.getInstance().getBean(KawiaRepository.class);
-        kawiaRepository.findByPlec(true);
+//        KawiaRepository kawiaRepository = Context.getInstance().getBean(KawiaRepository.class);
+//        kawiaRepository.findByPlec(true);
     }
 
     public static void main(String[] args) {
