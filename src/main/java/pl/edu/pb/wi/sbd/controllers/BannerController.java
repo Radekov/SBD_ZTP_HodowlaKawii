@@ -21,6 +21,7 @@ public class BannerController implements Initializable {
 
     }
 
+    //FIXME
     public void setVisibleLogoImageHodowla(boolean visible){
         logoImageHodowla.setVisible(visible);
     }
