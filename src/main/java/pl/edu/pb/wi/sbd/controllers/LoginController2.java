@@ -33,12 +33,14 @@ public class LoginController2 extends AbstractController {
     private PasswordField field_password;
 
     @FXML // fx:id="button_login"
-    private Button button_login;
+    private Button buttonLogin;
 
     private Login result;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        sObservable.addObserver(this);
+        addControls();
         System.out.println(this.getClass().getSimpleName() + " initialize");
         hideStatements();
         bannerController.setVisibleLogoImageHodowla(false);
@@ -70,7 +72,7 @@ public class LoginController2 extends AbstractController {
                 statement_password.setVisible(true);
                 break;
             case GOOD_LOGIN:
-
+                unregister();
                 openScene(event,"/fxml/main.fxml");
         }
     }
@@ -106,10 +108,6 @@ public class LoginController2 extends AbstractController {
         System.out.println("Logged " + login);
         CONTEXT.setLogged(result);
         return validate;
-    }
-    @Override
-    protected void addControls() {
-
     }
 
 }

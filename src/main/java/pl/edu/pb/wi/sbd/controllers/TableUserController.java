@@ -1,9 +1,6 @@
 package pl.edu.pb.wi.sbd.controllers;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,8 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import pl.edu.pb.wi.sbd.Context;
 import pl.edu.pb.wi.sbd.controllers.models.Model;
-import pl.edu.pb.wi.sbd.controllers.models.TypeUser;
-import pl.edu.pb.wi.sbd.database.models.*;
 import pl.edu.pb.wi.sbd.database.repository.LoginRepository;
 import pl.edu.pb.wi.sbd.database.repository.OsobaRepository;
 
@@ -29,7 +24,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Radosław Naruszewicz on 2017-01-16.
  */
-public class TableUserController implements Initializable {
+public class TableUserController extends AbstractWindowController implements Initializable {
 
     @FXML
     private TableColumn<Model, String> column_adress;
@@ -69,6 +64,7 @@ public class TableUserController implements Initializable {
 
     @FXML
     void actionBack(ActionEvent event) {
+        unregister();
         ((Stage)button_back.getScene().getWindow()).close();
     }
 
@@ -85,6 +81,8 @@ public class TableUserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        sObservable.addObserver(this);
+        addControls();
         List<Model> dataModel = new ArrayList<>();
         loginRepository.findAll().forEach(l -> dataModel.add(new Model(l)));
         ObservableList<Model> data = FXCollections.observableArrayList();

@@ -9,7 +9,10 @@ import org.hibernate.annotations.Type;
 import pl.edu.pb.wi.sbd.Context;
 import pl.edu.pb.wi.sbd.database.repository.KawiaRepository;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;

@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Radosław Naruszewicz on 2017-01-14.
  */
-public class WeightController implements Initializable {
+public class WeightController extends AbstractWindowController  implements Initializable {
     @FXML // fx:id="DateWeight"
     private DatePicker DateWeight; // Value injected by FXMLLoader
 
@@ -58,12 +58,14 @@ public class WeightController implements Initializable {
     }
 
     @FXML
-    void CancelWeight(ActionEvent event) {
+    void CancelWeight(ActionEvent event) {unregister();
         ((Stage)CancelWeightButton.getScene().getWindow()).close();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        sObservable.addObserver(this);
+        addControls();
         data = FXCollections.observableArrayList();
         OwnerCavies cavies = Context.CONTEXT.getLogged();
         data.addAll(cavies.getAllCavies());

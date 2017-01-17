@@ -24,7 +24,6 @@ import pl.edu.pb.wi.sbd.database.repository.WagaRepository;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.ResourceBundle;
 
 /**
@@ -32,7 +31,7 @@ import java.util.ResourceBundle;
  *
  * @author Admin
  */
-public class LineageController implements Initializable {
+public class LineageController extends AbstractWindowController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -129,11 +128,13 @@ public class LineageController implements Initializable {
 
     @FXML
     void back(ActionEvent event) {
-        ((Stage) button_back.getScene().getWindow()).close();
+        unregister();((Stage) button_back.getScene().getWindow()).close();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        sObservable.addObserver(this);
+        addControls();
         KawiaRepository kawiaRepository = Context.CONTEXT.getInstance().getBean(KawiaRepository.class);
         wagaRepository = Context.CONTEXT.getInstance().getBean(WagaRepository.class);
         ObservableList<Kawia> data = FXCollections.observableArrayList();

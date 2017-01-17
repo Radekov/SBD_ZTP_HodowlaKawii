@@ -1,11 +1,7 @@
 package pl.edu.pb.wi.sbd.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import pl.edu.pb.wi.sbd.controllers.patterns.BreederFactory;
 import pl.edu.pb.wi.sbd.controllers.patterns.LoverFactory;
@@ -29,18 +25,19 @@ public class MainController extends AbstractController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        sObservable.addObserver(this);
         Login l = CONTEXT.getLogged();
         UserFactory intefaceUser = null;
-        if(l instanceof Hodowla)intefaceUser = new BreederFactory(bannerController);
-        if(l instanceof Milosnik)intefaceUser = new LoverFactory(bannerController);
-        if(l instanceof Zarzad) intefaceUser = new ManagerFactory(bannerController);
+        if(l instanceof Hodowla)intefaceUser = new BreederFactory(this,bannerController);
+        if(l instanceof Milosnik)intefaceUser = new LoverFactory(this,bannerController);
+        if(l instanceof Zarzad) intefaceUser = new ManagerFactory(this,bannerController);
         intefaceUser.createButtons();
         intefaceUser.createHeader();
         intefaceUser.createToolbar();
         interface_user.getChildren().addAll(intefaceUser.getHeader(),intefaceUser.getPanel());
         intefaceUser.getHeader().getChildren().forEach(e-> System.out.println(e));
         interface_user.getChildren().forEach(e-> System.out.println(e));
-
+        addControls();
     }
 
     @Override

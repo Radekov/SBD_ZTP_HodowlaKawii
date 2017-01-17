@@ -3,22 +3,9 @@ package pl.edu.pb.wi.sbd.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
-
-import java.net.URL;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
@@ -28,10 +15,15 @@ import pl.edu.pb.wi.sbd.database.models.*;
 import pl.edu.pb.wi.sbd.database.repository.*;
 import pl.edu.pb.wi.sbd.security.HashPassword;
 
+import java.net.URL;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.ResourceBundle;
+
 /**
  * Created by Radosław Naruszewicz on 2017-01-15.
  */
-public class AddUserController implements Initializable {
+public class AddUserController extends AbstractWindowController implements Initializable {
 
     @FXML // fx:id="group_status"
     private ToggleGroup group_status; // Value injected by FXMLLoader
@@ -99,7 +91,7 @@ public class AddUserController implements Initializable {
 
     @FXML
     void cancelWindow(ActionEvent event){
-        close();
+        unregister();close();
     }
 
     @FXML
@@ -154,6 +146,8 @@ public class AddUserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        sObservable.addObserver(this);
+        addControls();
         OsobaRepository osobaRepository = Context.CONTEXT.getInstance().getBean(OsobaRepository.class);
         ObservableList<Osoba> personOsobaObservableList = FXCollections.observableArrayList();
         personOsobaObservableList.addAll(osobaRepository.findAll());

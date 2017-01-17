@@ -84,6 +84,8 @@ public class TableCaviaController extends AbstractController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        caviesList = new ArrayList<>();
+        sObservable.addObserver(this);
+        addControls();
         data = FXCollections.observableArrayList();
         OwnerCavies cavies = CONTEXT.getLogged();
         data.addAll(cavies.getAllCavies());//RYZYKO dla hodowli/miłośnika która nie ma żadnych, że nie zadziała
@@ -157,7 +159,7 @@ public class TableCaviaController extends AbstractController {
     }
 
     @FXML
-    void actionBack(ActionEvent event) {
+    void actionBack(ActionEvent event) {unregister();
         openScene(event, "/fxml/main.fxml");
     }
 
@@ -183,10 +185,6 @@ public class TableCaviaController extends AbstractController {
             return null;
         }
     };
-    @Override
-    protected void addControls() {
-
-    }
 
     public class DatePickerCell<S, T> extends TableCell<Kawia, Date> {
 

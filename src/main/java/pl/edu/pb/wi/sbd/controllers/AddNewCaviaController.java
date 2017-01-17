@@ -110,8 +110,8 @@ public class AddNewCaviaController extends AbstractWindowController implements I
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sObservable.addObserver(this);
-        System.out.println(sObservable.countObservers());
         addControls();
+        sObservable.update();
         KawiaRepository kawiaRepository = CONTEXT.getInstance().getBean(KawiaRepository.class);
         fathersObservableList = FXCollections.observableArrayList();
         fathersObservableList.addAll(kawiaRepository.findByPlec(true));
@@ -180,6 +180,7 @@ public class AddNewCaviaController extends AbstractWindowController implements I
         mothersObservableList = null;
         newMiot = null;
         newKawia = null;
+        unregister();
         ((Stage)button_add_new_cavia.getScene().getWindow()).close();
     }
 
@@ -221,30 +222,6 @@ public class AddNewCaviaController extends AbstractWindowController implements I
             return null;
         }
     };
-
-    @Override
-    protected void addControls() {
-        controls.add(radio_button_female);
-        controls.add(radio_button_male);
-        controls.add(label_father_colour);
-        controls.add(label_father_race);
-        controls.add(label_father_name);
-        controls.add(label_father_przydomek);
-        controls.add(label_mother_przydomek);
-        controls.add(label_mother_colour);
-        controls.add(label_mother_race);
-        controls.add(label_mother_name);
-        controls.add(label_error);
-        controls.add(text_przydomek);
-        controls.add(text_race);
-        controls.add(text_name);
-        controls.add(text_colour);
-        controls.add(button_back);
-        controls.add(button_add_new_cavia);
-        controls.add(date_picker_born);
-        controls.add(combo_father);
-        controls.add(checkbox_owner);
-    }
 
     @Override
     public void update(Observable o, Object arg) {

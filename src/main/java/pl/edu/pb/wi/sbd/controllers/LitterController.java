@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Radosław Naruszewicz on 2017-01-14.
  */
-public class LitterController implements Initializable {
+public class LitterController extends AbstractWindowController implements Initializable {
 
     @FXML // fx:id="label_mother_race"
     private Label label_mother_race; // Value injected by FXMLLoader
@@ -107,6 +107,8 @@ public class LitterController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        sObservable.addObserver(this);
+        addControls();
         kawiaRepository = Context.CONTEXT.getInstance().getBean(KawiaRepository.class);
         miotRepository = Context.CONTEXT.getInstance().getBean(MiotRepository.class);
         fathersObservableList = FXCollections.observableArrayList();
@@ -168,7 +170,7 @@ public class LitterController implements Initializable {
             tableLitter.getItems().remove(kawia);
             kawia.setIdHodowla(null);
         });
-        button_back.setOnAction(e -> close());
+        button_back.setOnAction(e -> {unregister();close();});
         button_add_next.setOnAction(e -> {
             try {
                 tableLitter.getItems().add((Kawia)prototyp.clone());

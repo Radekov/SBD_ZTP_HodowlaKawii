@@ -11,15 +11,13 @@ import javafx.scene.control.Labeled;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import pl.edu.pb.wi.sbd.Context;
+import pl.edu.pb.wi.sbd.controllers.AbstractWindowController;
 import pl.edu.pb.wi.sbd.controllers.BannerController;
-import pl.edu.pb.wi.sbd.controllers.ToolbarController;
 import pl.edu.pb.wi.sbd.database.models.Login;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Created by Radosław Naruszewicz on 2017-01-17.
@@ -31,8 +29,9 @@ public abstract class UserFactory {
     protected BannerController toolbar;
     protected List<Labeled> labeleds = new ArrayList<>();
     protected Login l;
+    protected AbstractWindowController awc;
 
-    protected UserFactory(BannerController toolbarController){
+    protected UserFactory(AbstractWindowController awc, BannerController toolbarController){
         panel = new HBox();
         header = new HBox();
         kind = new Label();
@@ -40,6 +39,7 @@ public abstract class UserFactory {
         status = new Label();
         this.toolbar = toolbarController;
         l = Context.CONTEXT.getLogged();
+        this.awc=awc;
     }
 
     public abstract void createButtons();
@@ -51,6 +51,7 @@ public abstract class UserFactory {
     protected void addButtonToLabel(){
         Button b = new Button("Wyloguj");
         b.setOnAction(e->{
+            awc.unregister();
             Context.CONTEXT.setLogged(null);
             openScene(e,"/fxml/login.fxml");
         });

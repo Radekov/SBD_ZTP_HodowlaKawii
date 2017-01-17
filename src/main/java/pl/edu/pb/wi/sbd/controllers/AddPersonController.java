@@ -1,13 +1,11 @@
 package pl.edu.pb.wi.sbd.controllers;
 
-import com.sun.org.apache.bcel.internal.generic.LNEG;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import pl.edu.pb.wi.sbd.Context;
 import pl.edu.pb.wi.sbd.database.models.Osoba;
@@ -19,7 +17,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Radosław Naruszewicz on 2017-01-15.
  */
-public class AddPersonController implements Initializable {
+public class AddPersonController extends AbstractWindowController implements Initializable {
 
     @FXML // fx:id="PostelCode"
     private TextField PostelCode; // Value injected by FXMLLoader
@@ -75,12 +73,15 @@ public class AddPersonController implements Initializable {
 
     @FXML
     void cancel(ActionEvent event) {
+        unregister();
         ((Stage)cancelButton.getScene().getWindow()).close();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        ((Stage)cancelButton.getScene().getWindow()).setOnCloseRequest(e->unregister());
+        sObservable.addObserver(this);
+        addControls();
     }
     private boolean isEmpty(String text){
         if(text == null || text.equals("")) return true;

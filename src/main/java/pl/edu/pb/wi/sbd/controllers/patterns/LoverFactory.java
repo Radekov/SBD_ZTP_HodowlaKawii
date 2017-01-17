@@ -1,20 +1,16 @@
 package pl.edu.pb.wi.sbd.controllers.patterns;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.Labeled;
-import pl.edu.pb.wi.sbd.Context;
+import pl.edu.pb.wi.sbd.controllers.AbstractWindowController;
 import pl.edu.pb.wi.sbd.controllers.BannerController;
-import pl.edu.pb.wi.sbd.controllers.ToolbarController;
-import pl.edu.pb.wi.sbd.database.models.Hodowla;
 import pl.edu.pb.wi.sbd.database.models.Milosnik;
-
 /**
  * Created by Radosław Naruszewicz on 2017-01-17.
  */
 public class LoverFactory extends UserFactory {
 
-    public LoverFactory(BannerController toolbarController) {
-        super(toolbarController);
+    public LoverFactory(AbstractWindowController awc,BannerController toolbarController) {
+        super(awc, toolbarController);
     }
 
     @Override
@@ -33,7 +29,7 @@ public class LoverFactory extends UserFactory {
         Button setWeight = new Button("Ustaw wagę");
         Button createLineage = new Button("Rodowód");
 
-        listCavia.setOnAction(e -> openScene(e, "/fxml/cavia_list.fxml"));
+        listCavia.setOnAction(e -> {awc.unregister(); openScene(e, "/fxml/cavia_list.fxml");});
         setWeight.setOnAction(e -> openWindow("/fxml/weight.fxml"));
         createLineage.setOnAction(e -> openWindow("/fxml/Lineage.fxml"));
         addToHBoxAndSet(panel, listCavia, setWeight, createLineage);

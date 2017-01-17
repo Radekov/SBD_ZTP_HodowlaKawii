@@ -1,16 +1,16 @@
 package pl.edu.pb.wi.sbd.controllers.patterns;
 
 import javafx.scene.control.Button;
+import pl.edu.pb.wi.sbd.controllers.AbstractWindowController;
 import pl.edu.pb.wi.sbd.controllers.BannerController;
-import pl.edu.pb.wi.sbd.controllers.ToolbarController;
 
 /**
  * Created by Radosław Naruszewicz on 2017-01-17.
  */
 public class ManagerFactory extends UserFactory{
 
-    public ManagerFactory(BannerController toolbarController) {
-        super(toolbarController);
+    public ManagerFactory(AbstractWindowController awc, BannerController toolbarController) {
+        super(awc, toolbarController);
     }
 
     @Override
