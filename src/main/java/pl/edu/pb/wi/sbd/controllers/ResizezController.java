@@ -18,7 +18,7 @@ public class ResizezController implements Initializable{
 
     @FXML
     Button font_minus;
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //todo poczytac o observable
