@@ -19,6 +19,7 @@ import pl.edu.pb.wi.sbd.database.models.Rasa;
 import pl.edu.pb.wi.sbd.database.repository.KawiaRepository;
 import pl.edu.pb.wi.sbd.database.repository.MiotRepository;
 import pl.edu.pb.wi.sbd.database.repository.RasaRepository;
+import pl.edu.pb.wi.sbd.dialogs.AlertBox;
 
 import java.net.URL;
 import java.time.ZoneId;
@@ -198,6 +199,7 @@ public class LitterController extends AbstractWindowController implements Initia
                 k.setIdMiot(newMiot);
                 kawiaRepository.save(k);
             });
+            new AlertBox().display("Komunikat","Dodano nowy miot");
             close();
         });
     }

@@ -13,6 +13,7 @@ import pl.edu.pb.wi.sbd.Context;
 import pl.edu.pb.wi.sbd.controllers.models.TypeUser;
 import pl.edu.pb.wi.sbd.database.models.*;
 import pl.edu.pb.wi.sbd.database.repository.*;
+import pl.edu.pb.wi.sbd.dialogs.AlertBox;
 import pl.edu.pb.wi.sbd.security.HashPassword;
 
 import java.net.URL;
@@ -96,12 +97,12 @@ public class AddUserController extends AbstractWindowController implements Initi
 
     @FXML
     void add(ActionEvent event) {
-        //
         String st="";
         if (group_status.getSelectedToggle() == Active) st="Aktywny";
         else if (group_status.getSelectedToggle() == Diseable) st="Zawieszony";
         else if (group_status.getSelectedToggle() == Suspended) st="Usunięta";
         Date date = Date.from(DateS.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        //
         switch (type_new_user.getValue()) {
             case BREEDING:
                 Hodowla h = new Hodowla();
@@ -137,6 +138,7 @@ public class AddUserController extends AbstractWindowController implements Initi
                 MilosnikRepository milosnikRepository = Context.getInstance().getBean(MilosnikRepository.class);
                 milosnikRepository.save(m);
         }
+        new AlertBox().display("Komunikat","Dodano nowego użytkownika");
         close();
     }
 

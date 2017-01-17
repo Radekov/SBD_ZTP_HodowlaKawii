@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import pl.edu.pb.wi.sbd.Context;
 import pl.edu.pb.wi.sbd.database.models.Osoba;
 import pl.edu.pb.wi.sbd.database.repository.OsobaRepository;
+import pl.edu.pb.wi.sbd.dialogs.AlertBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -68,6 +69,7 @@ public class AddPersonController extends AbstractWindowController implements Ini
         o.setTelefon(Phone.getText());
         OsobaRepository osobaRepository = Context.CONTEXT.getInstance().getBean(OsobaRepository.class);
         osobaRepository.save(o);
+        new AlertBox().display("Komunikat","Dodano nową osobę");
         this.cancel(event);
     }
 

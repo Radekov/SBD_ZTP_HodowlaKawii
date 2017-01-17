@@ -18,6 +18,7 @@ import pl.edu.pb.wi.sbd.database.models.Rasa;
 import pl.edu.pb.wi.sbd.database.repository.KawiaRepository;
 import pl.edu.pb.wi.sbd.database.repository.MiotRepository;
 import pl.edu.pb.wi.sbd.database.repository.RasaRepository;
+import pl.edu.pb.wi.sbd.dialogs.AlertBox;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -171,6 +172,7 @@ public class AddNewCaviaController extends AbstractWindowController implements I
 
         //return newKawia;
         originalTableCavies.getItems().add(newKawia);
+        new AlertBox().display("Komunikat","Dodano nową kawię");
         actionCancelAddNewCavia(event);
     }
 

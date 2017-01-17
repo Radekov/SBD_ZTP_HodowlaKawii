@@ -14,6 +14,7 @@ import pl.edu.pb.wi.sbd.database.models.Kawia;
 import pl.edu.pb.wi.sbd.database.models.Waga;
 import pl.edu.pb.wi.sbd.database.repository.KawiaRepository;
 import pl.edu.pb.wi.sbd.database.repository.WagaRepository;
+import pl.edu.pb.wi.sbd.dialogs.AlertBox;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -54,6 +55,7 @@ public class WeightController extends AbstractWindowController  implements Initi
         newWaga.setWaga(Double.parseDouble(Weight.getText()));
         WagaRepository wagaRepository = Context.getInstance().getBean(WagaRepository.class);
         wagaRepository.save(newWaga);
+        new AlertBox().display("Komunikat","Zaaktualizowano wagę kawii"+ComboCavia.getValue().getImie() + " " + ComboCavia.getValue().getPrzydomek());
         ((Stage)AddWeightButton.getScene().getWindow()).close();
     }
 
