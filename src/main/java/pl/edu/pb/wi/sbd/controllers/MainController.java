@@ -2,17 +2,16 @@ package pl.edu.pb.wi.sbd.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import pl.edu.pb.wi.sbd.controllers.patterns.BreederFactory;
-import pl.edu.pb.wi.sbd.controllers.patterns.LoverFactory;
-import pl.edu.pb.wi.sbd.controllers.patterns.ManagerFactory;
-import pl.edu.pb.wi.sbd.controllers.patterns.UserFactory;
+import pl.edu.pb.wi.sbd.controllers.patterns.*;
 import pl.edu.pb.wi.sbd.database.models.Hodowla;
 import pl.edu.pb.wi.sbd.database.models.Login;
 import pl.edu.pb.wi.sbd.database.models.Milosnik;
 import pl.edu.pb.wi.sbd.database.models.Zarzad;
 
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
@@ -22,15 +21,20 @@ public class MainController extends AbstractController {
 
     @FXML
     private VBox interface_user;
+    @FXML
+    private Label payment;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Strategy strategy= null;
         sObservable.addObserver(this);
         Login l = CONTEXT.getLogged();
         UserFactory intefaceUser = null;
-        if(l instanceof Hodowla)intefaceUser = new BreederFactory(this,bannerController);
-        if(l instanceof Milosnik)intefaceUser = new LoverFactory(this,bannerController);
-        if(l instanceof Zarzad) intefaceUser = new ManagerFactory(this,bannerController);
+        switch(l.getType()){
+            case BREEDING:intefaceUser = new BreederFactory(this,bannerController); strategy = new StrategyBreeder(); break;
+            case LOVER:intefaceUser = new LoverFactory(this,bannerController); strategy = new StrategyLover(); break;
+            case CONTROL:intefaceUser = new ManagerFactory(this,bannerController); strategy = new StrategyManger(); break;
+        }
         intefaceUser.createButtons();
         intefaceUser.createHeader();
         intefaceUser.createToolbar();
@@ -38,6 +42,7 @@ public class MainController extends AbstractController {
         intefaceUser.getHeader().getChildren().forEach(e-> System.out.println(e));
         interface_user.getChildren().forEach(e-> System.out.println(e));
         addControls();
+        payment.setText(String.format(Locale.US, "Do zapłaty %.2f zł",strategy.calculate(l)));
     }
 
     @Override

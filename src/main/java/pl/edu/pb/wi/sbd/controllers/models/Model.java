@@ -13,38 +13,23 @@ public class Model {
     String fname;
     String lname;
     String phone;
-
     String adress;
-
     String street;
 
-
     public Model(Login l) {
-//            this.id.setValue(l.getIdLogin());
-//            this.login.setValue(l.getNazwa());
         id = l.getIdLogin();
         login = l.getNazwa();
         status = l.getStatus();
+        kind = l.getType();
 
         Osoba o = l.getIdOsoba();
         if (o != null) {
-//                this.fname.setValue(o.getImie());
-//                this.lname.setValue(o.getNazwisko());
-//                this.phone.setValue(o.getTelefon());
-//                this.adress.setValue(o.getMiasto() + " " + o.getKodPocztowy());
-//                this.street.setValue(o.getUlica());
-//                this.status.setValue(l.getStatus());
             fname = o.getImie();
             lname = o.getNazwisko();
             phone = o.getTelefon();
             adress = o.getMiasto() + " " + o.getKodPocztowy();
             street = o.getUlica();
-
         }
-        //TODO źle
-        if (l instanceof Hodowla) kind = TypeUser.BREEDING;
-        if (l instanceof Zarzad) kind = TypeUser.CONTROL;
-        if (l instanceof Milosnik) kind = TypeUser.LOVER;
     }
 
     public Integer getId() {

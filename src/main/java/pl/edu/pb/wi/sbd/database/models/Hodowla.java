@@ -1,6 +1,7 @@
 package pl.edu.pb.wi.sbd.database.models;
 
 import pl.edu.pb.wi.sbd.Context;
+import pl.edu.pb.wi.sbd.controllers.models.TypeUser;
 import pl.edu.pb.wi.sbd.database.repository.HodowlaStatusRepository;
 
 import javax.persistence.*;
@@ -171,6 +172,11 @@ public class Hodowla extends Login implements Serializable{
         String result = hodowlaStatusRepository.findByDate(getIdLogin());
         if(result == null) result = "";
         return result;
+    }
+
+    @Override
+    public TypeUser getType() {
+        return TypeUser.BREEDING;
     }
 
     //    @Override

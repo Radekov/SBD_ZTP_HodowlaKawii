@@ -76,7 +76,6 @@ public class TableUserController extends AbstractWindowController implements Ini
         table_user.getItems().remove(m);
     }
 
-    OsobaRepository osobaRepository = Context.getInstance().getBean(OsobaRepository.class);
     LoginRepository loginRepository = Context.getInstance().getBean(LoginRepository.class);
 
     @Override

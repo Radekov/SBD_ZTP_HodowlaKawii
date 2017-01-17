@@ -6,6 +6,7 @@
 package pl.edu.pb.wi.sbd.database.models;
 
 import pl.edu.pb.wi.sbd.controllers.models.OwnerCavies;
+import pl.edu.pb.wi.sbd.controllers.models.TypeUser;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -110,4 +111,7 @@ public abstract class Login implements Serializable, OwnerCavies{
     }
 
     public abstract String getStatus();
+
+    public abstract TypeUser getType();
+
 }

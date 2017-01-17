@@ -7,6 +7,7 @@ package pl.edu.pb.wi.sbd.database.models;
 
 import org.hibernate.annotations.Type;
 import pl.edu.pb.wi.sbd.Context;
+import pl.edu.pb.wi.sbd.controllers.models.TypeUser;
 import pl.edu.pb.wi.sbd.database.repository.KawiaRepository;
 
 import javax.persistence.Column;
@@ -126,5 +127,10 @@ public class Zarzad extends Login implements Serializable {
     public List<Kawia> getAllCavies() {
         KawiaRepository kawiaRepository = Context.getInstance().getBean(KawiaRepository.class);
         return kawiaRepository.findAll();
+    }
+
+    @Override
+    public TypeUser getType() {
+        return TypeUser.CONTROL;
     }
 }
