@@ -183,6 +183,10 @@ public class TableCaviaController extends AbstractController {
             return null;
         }
     };
+    @Override
+    protected void addControls() {
+
+    }
 
     public class DatePickerCell<S, T> extends TableCell<Kawia, Date> {
 

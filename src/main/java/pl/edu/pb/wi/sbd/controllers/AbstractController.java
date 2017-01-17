@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * Created by Radosław Naruszewicz on 2017-01-05.
  */
-public abstract class AbstractController implements Initializable {
+public abstract class AbstractController extends AbstractWindowController implements Initializable {
     @FXML
     protected BannerController bannerController;
     protected Context CONTEXT = Context.CONTEXT;

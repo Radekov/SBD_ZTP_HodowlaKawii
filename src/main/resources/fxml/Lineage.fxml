@@ -105,6 +105,11 @@
             <ComboBox fx:id="combo_file" layoutX="173.0" layoutY="332.0" prefHeight="25.0" prefWidth="169.0" promptText="Wybierz format pliku" />
             <Button fx:id="button_generate" layoutX="356.0" layoutY="332.0" mnemonicParsing="false" onAction="#generate" prefHeight="25.0" prefWidth="106.0" text="Generuj" />
             <Button fx:id="button_back" layoutX="27.0" layoutY="356.0" mnemonicParsing="false" onAction="#back" text="Powrót" />
+            <VBox layoutX="449.0" layoutY="368.0" prefHeight="25.0" prefWidth="54.0">
+            <children>
+               <fx:include fx:id="resizez" source="buttonResizer.fxml" />
+            </children>
+         </VBox>
          </children>
       </Pane>
    </children>

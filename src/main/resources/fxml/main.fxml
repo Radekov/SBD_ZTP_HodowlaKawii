@@ -9,11 +9,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.MainController">
    <children>
-       <Pane>
+       <VBox layoutX="-1.0" prefHeight="173.0">
            <children>
-               <fx:include fx:id="banner" source="banner.fxml" />
+               <fx:include source="banner.fxml" fx:id="banner"/>
+               <fx:include source="buttonResizer.fxml" fx:id="resizez"/>
            </children>
-       </Pane>
+       </VBox>
       <VBox fx:id="interface_user" layoutX="14.0" layoutY="184.0" prefHeight="153.0" prefWidth="608.0" />
    </children>
 </AnchorPane>

@@ -23,5 +23,10 @@
       <Button fx:id="AddPersonButton" layoutX="379.0" layoutY="338.0" mnemonicParsing="false" onAction="#AddPerson" text="Dodaj" />
       <Label fx:id="ErrorsLabel" layoutX="159.0" layoutY="378.0" prefHeight="17.0" prefWidth="149.0" text="Błędy" />
       <Button fx:id="cancelButton" layoutX="308.0" layoutY="338.0" mnemonicParsing="false" onAction="#cancel" text="Anuluj" />
+      <VBox layoutX="14.0" layoutY="363.0" prefHeight="25.0" prefWidth="54.0">
+         <children>
+            <fx:include fx:id="resizez" source="buttonResizer.fxml" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

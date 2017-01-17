@@ -107,6 +107,9 @@ public class LoginController2 extends AbstractController {
         CONTEXT.setLogged(result);
         return validate;
     }
+    @Override
+    protected void addControls() {
 
+    }
 
 }

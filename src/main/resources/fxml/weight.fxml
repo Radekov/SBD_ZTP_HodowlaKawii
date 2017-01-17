@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.WeightController"><children>
+    <VBox layoutX="284.0" layoutY="373.0" prefHeight="25.0" prefWidth="54.0">
+        <children>
+            <fx:include fx:id="resizez" source="buttonResizer.fxml" />
+        </children>
+    </VBox>
       <ComboBox fx:id="ComboCavia" layoutX="74.0" layoutY="69.0" prefHeight="25.0" prefWidth="174.0" promptText="Wybierz kawię" />
       <Button fx:id="AddWeightButton" layoutX="236.0" layoutY="309.0" mnemonicParsing="false" onAction="#AddWeight" text="Dodaj" />
       <Button fx:id="CancelWeightButton" layoutX="60.0" layoutY="309.0" mnemonicParsing="false" onAction="#CancelWeight" text="Anuluj" />

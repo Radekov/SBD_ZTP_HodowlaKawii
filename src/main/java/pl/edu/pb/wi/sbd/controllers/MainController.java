@@ -48,4 +48,8 @@ public class MainController extends AbstractController {
 
     }
 
+    @Override
+    protected void addControls() {
+        controls.addAll(interface_user.getChildren());
+    }
 }

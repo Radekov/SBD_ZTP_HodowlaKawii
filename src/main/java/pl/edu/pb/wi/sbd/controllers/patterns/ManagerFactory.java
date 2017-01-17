@@ -30,6 +30,7 @@ public class ManagerFactory extends UserFactory{
     public void createHeader() {
         super.createHeader();
         kind.setText("ZARZĄD");
+        if(l.getIdOsoba() != null)
         name.setText(l.getIdOsoba().getImie() + " " + l.getIdOsoba().getNazwisko());
         status.setText(l.getStatus());
         addToHBoxAndSet(header,kind,name,status);

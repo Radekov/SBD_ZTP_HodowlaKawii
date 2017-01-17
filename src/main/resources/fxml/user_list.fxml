@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="901.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.TableUserController">
    <children>
@@ -21,6 +24,11 @@
             <TableColumn fx:id="column_street" prefWidth="75.0" text="Ulica" />
         </columns>
       </TableView>
+       <VBox layoutX="14.0" layoutY="399.0" prefHeight="19.0" prefWidth="54.0">
+           <children>
+               <fx:include fx:id="resizez" source="buttonResizer.fxml" />
+           </children>
+       </VBox>
       <Button fx:id="button_back" layoutX="700.0" layoutY="399.0" mnemonicParsing="false" onAction="#actionBack" text="Powrót" />
       <Button fx:id="button_remove_user" layoutX="789.0" layoutY="399.0" mnemonicParsing="false" onAction="#actionDeleteUser" text="Usuń konto" />
    </children>

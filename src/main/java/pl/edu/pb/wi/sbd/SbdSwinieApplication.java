@@ -7,14 +7,8 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import pl.edu.pb.wi.sbd.database.models.Hodowla;
-import pl.edu.pb.wi.sbd.database.models.HodowlaStatus;
-import pl.edu.pb.wi.sbd.database.models.HodowlaStatusPK;
-import pl.edu.pb.wi.sbd.database.models.Klub;
-import pl.edu.pb.wi.sbd.database.repository.HodowlaRepository;
-import pl.edu.pb.wi.sbd.database.repository.HodowlaStatusRepository;
-import pl.edu.pb.wi.sbd.database.repository.KawiaRepository;
-import pl.edu.pb.wi.sbd.database.repository.KlubRepository;
+import pl.edu.pb.wi.sbd.database.models.*;
+import pl.edu.pb.wi.sbd.database.repository.*;
 import pl.edu.pb.wi.sbd.security.HashPassword;
 
 import java.util.Date;
@@ -38,7 +32,7 @@ public class SbdSwinieApplication extends AbstractJavaFxApplicationSupport {
         stage.setScene(scene);
         stage.show();
         window = stage;
-        setFirstValues();
+//        setFirstValues();
 
 //        KawiaRepository kawiaRepository = Context.getInstance().getBean(KawiaRepository.class);
 //        kawiaRepository.findByPlec(true);
@@ -70,6 +64,14 @@ public class SbdSwinieApplication extends AbstractJavaFxApplicationSupport {
         hs.setStatus("AKTYWNY");
         hs.setHodowla(h);
         hs = hodowlaStatusRepository.save(hs);
+
+        Zarzad z = new Zarzad();
+        z.setHaslo(HashPassword.get_SHA_512_SecurePassword("a"));
+        z.setNazwa("a");
+        z.setStatus("AKTYWNY");
+        z.setDataNadania(new Date());
+        ZarzadRepository zarzadRepository = Context.getInstance().getBean(ZarzadRepository.class);
+        zarzadRepository.save(z);
     }
 }
 //Albinos Białe Czarne Czerwone Czekoladowe Sepia Beżowe Szafran Kremowe Buff Lila Złote Slate blue Tricolor (tri) Roan Brindle Dalmatian Himalaya Agouti Solid

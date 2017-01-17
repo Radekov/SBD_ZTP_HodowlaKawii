@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="901.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pb.wi.sbd.controllers.TableCaviaController">
    <children>
        <Pane layoutX="131.0" layoutY="6.0" prefHeight="173.0">
@@ -27,5 +31,11 @@
       <Button fx:id="button_add_cavia" layoutX="806.0" layoutY="583.0" mnemonicParsing="false" onAction="#actionAddNewCavia" text="Dodaj kawię" />
       <Button fx:id="button_back" layoutX="14.0" layoutY="583.0" mnemonicParsing="false" onAction="#actionBack" text="Powrót" />
       <Button fx:id="button_remove_cavia" layoutX="708.0" layoutY="583.0" mnemonicParsing="false" onAction="#actionDeleteSelectedCavia" text="Usuń kawię" />
+       <VBox layoutX="833.0" layoutY="14.0" prefHeight="25.0" prefWidth="54.0">
+           <children>
+               <fx:include fx:id="resizez" source="buttonResizer.fxml" />
+           </children>
+       </VBox>
    </children>
+
 </AnchorPane>

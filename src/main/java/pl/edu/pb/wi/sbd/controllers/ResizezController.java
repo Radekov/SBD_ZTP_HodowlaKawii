@@ -21,8 +21,7 @@ public class ResizezController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //todo poczytac o observable
-        font_plus.setOnAction(e->Size.update(true));
-        font_minus.setOnAction(e->Size.update(false));
+        font_plus.setOnAction(e->AbstractWindowController.getsObservable().update(true));
+        font_minus.setOnAction(e->AbstractWindowController.getsObservable().update(false));
     }
 }

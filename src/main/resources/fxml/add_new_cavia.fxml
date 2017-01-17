@@ -125,5 +125,10 @@
       <Button fx:id="button_add_new_cavia" layoutX="326.0" layoutY="320.0" mnemonicParsing="false" onAction="#actionAddNewCavia" text="Dodaj" />
       <Button fx:id="button_back" layoutX="62.0" layoutY="320.0" mnemonicParsing="false" onAction="#actionCancelAddNewCavia" text="Powrót" />
       <Label fx:id="label_error" layoutX="221.0" layoutY="269.0" text="Błąd jakiś" />
+      <VBox layoutX="518.0" layoutY="320.0" prefHeight="25.0" prefWidth="54.0">
+      <children>
+         <fx:include fx:id="resizez" source="buttonResizer.fxml" />
+      </children>
+   </VBox>
    </children>
 </AnchorPane>
