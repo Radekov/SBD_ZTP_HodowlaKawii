@@ -31,7 +31,7 @@ public class ToolbarController implements Initializable {
         if (l == null)
             logo_hodowla.setVisible(false);
         else {
-            File file = new File("src/resources/images/logo_1.jpg");
+            File file = new File("src/resources/images/logo_"+l.getIdLogin()+".jpg");
             Image image = new Image(file.toURI().toString());
             logo_hodowla.setVisible(true);
             logo_hodowla.setImage(image);

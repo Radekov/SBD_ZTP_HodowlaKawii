@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
@@ -13,16 +14,6 @@
                <fx:include fx:id="banner" source="banner.fxml" />
            </children>
        </Pane>
-      <Label fx:id="label_kind" layoutX="14.0" layoutY="153.0" prefHeight="17.0" prefWidth="81.0" text="Rodzaj zalogowanego użytkownika" />
-      <Label fx:id="label_name_user" layoutX="95.0" layoutY="153.0" text="Pełna nazwa użytkownika" />
-      <Label fx:id="label_status" layoutX="305.0" layoutY="153.0" text="Status" />
-      <Button fx:id="button_logout" layoutX="572.0" layoutY="149.0" mnemonicParsing="false" onAction="#logoutActionClick" text="Wyloguj" />
-      <Button fx:id="button_list_cavies" layoutX="32.0" layoutY="200.0" mnemonicParsing="false" onAction="#actionOpenListCavies" text="Spis Kawii" />
-      <Button layoutX="218.0" layoutY="201.0" mnemonicParsing="false" onAction="#actionOpenAddLitter" text="Dodaj miot" />
-      <Button fx:id="admin_table_users" layoutX="29.0" layoutY="280.0" mnemonicParsing="false" text="Spis Użytkowników" />
-      <Button layoutX="499.0" layoutY="201.0" mnemonicParsing="false" onAction="#actionOpenLineage" text="Rodowód" />
-      <Button layoutX="116.0" layoutY="200.0" mnemonicParsing="false" onAction="#actionOpenWeight" text="Ustaw wagę" />
-      <Button fx:id="adminAddPerson" layoutX="163.0" layoutY="280.0" mnemonicParsing="false" onAction="#actionOpenAddPerson" text="Dodaj osobę" />
-      <Button fx:id="adminAddUser" layoutX="263.0" layoutY="280.0" mnemonicParsing="false" onAction="#actionOpenAddBreeding" text="Dodaj użytkownika" />
+      <VBox fx:id="interface_user" layoutX="14.0" layoutY="184.0" prefHeight="153.0" prefWidth="608.0" />
    </children>
 </AnchorPane>
