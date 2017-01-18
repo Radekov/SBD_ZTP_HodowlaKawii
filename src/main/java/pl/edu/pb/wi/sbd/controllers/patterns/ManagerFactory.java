@@ -20,8 +20,8 @@ public class ManagerFactory extends UserFactory{
         Button addUser = new Button("Dodaj użytkownika");
 
         listUser.setOnAction(e->openWindow("/fxml/user_list.fxml"));
-        addPerson.setOnAction(e->openWindow("/fxml/addPerson"));
-        addUser.setOnAction(e->openWindow("/fxml/AddUser"));
+        addPerson.setOnAction(e->openWindow("/fxml/addPerson.fxml"));
+        addUser.setOnAction(e->openWindow("/fxml/AddUser.fxml"));
         addToHBoxAndSet(panel,listUser,addPerson,addUser);
 
     }

@@ -81,7 +81,6 @@ public class AddPersonController extends AbstractWindowController implements Ini
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ((Stage)cancelButton.getScene().getWindow()).setOnCloseRequest(e->unregister());
         sObservable.addObserver(this);
         addControls();
     }
